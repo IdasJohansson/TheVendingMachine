@@ -56,8 +56,6 @@ var category = productToBuy.GetType().Name;
 Console.WriteLine(category);
 
 Product product = Product.CreateProduct(category);
-
-
 IProduct iproduct = product.GetProduct(productToBuy.ProductName);
 
 iproduct.Buy(); 
