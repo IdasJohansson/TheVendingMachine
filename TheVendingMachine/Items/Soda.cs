@@ -33,15 +33,17 @@ namespace TheVendingMachine.Items
         public override IProduct GetProduct(string ProductItemType)
         {
             if (ProductItemType.Equals("AppleSoda"))
-                return new AppleSoda(id:1, name:"Apple", info:"330ml", cost:15);
+                return new AppleSoda();
+
             else
-                return null; 
+                return null;
         }
 
+     
 
 
 
-      
+
     }
 }
 
