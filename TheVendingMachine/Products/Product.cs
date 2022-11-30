@@ -39,7 +39,6 @@ namespace TheVendingMachine.Items
 
         public abstract IProduct GetProduct(string Product);
      
-
         public static Product CreateProduct(string ProductCategory)
         {
             if (ProductCategory.Equals("Soda"))

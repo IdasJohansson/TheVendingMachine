@@ -1,5 +1,6 @@
 ﻿using System;
 using TheVendingMachine.Interfaces;
+using TheVendingMachine.MoneyHandler;
 using TheVendingMachine.Services;
 
 namespace TheVendingMachine.Items
@@ -33,25 +34,38 @@ namespace TheVendingMachine.Items
 
         public void Buy()
         {
-            Console.WriteLine("Lets buy this product");
-            // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
-            Console.WriteLine("Are you sure you want to buy this product? ");
-            Console.WriteLine("Press 1 to confirm and 0 to return to menu.");
-            int confirm = Convert.ToInt32(Console.ReadLine());
-            if (confirm == 1)
-            {
-                // Vid köpa av produkt ska produkten köpas och användas
-                Use();
-                Console.WriteLine("Press a key to return to menu");
-                Console.ReadKey();
+            // Vid köp av produkt så skall en kontroll ske; att användaren har
+            // matat in tillräckligt med pengar till automaten.Om inte så
+            // stoppas köpet.
 
-                // Användaren tas tillbaka till menyn vid avslutat köp:
-                Menus.StartMenu();
+            Wallet.ViewBalance();
+
+            if (true)
+            {
+                Console.WriteLine("Lets buy this product");
+                // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
+                Console.WriteLine("Are you sure you want to buy this product? ");
+                Console.WriteLine("Press 1 to confirm and 0 to return to menu.");
+                int confirm = Convert.ToInt32(Console.ReadLine());
+                if (confirm == 1)
+                {
+                    // Vid köpa av produkt ska produkten köpas och användas
+                    Use();
+                    Console.WriteLine("Press a key to return to menu");
+                    Console.ReadKey();
+
+                    // Användaren tas tillbaka till menyn vid avslutat köp:
+                    Menus.StartMenu();
+                }
+                else
+                {
+                    // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
+                    Menus.StartMenu();
+                }
             }
             else
             {
-                // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
-                Menus.StartMenu();
+                Console.WriteLine("Insert more money in machine");
             }
 
         }
