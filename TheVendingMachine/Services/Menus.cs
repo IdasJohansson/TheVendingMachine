@@ -28,6 +28,7 @@ namespace TheVendingMachine.Services
                     ViewProductsMenu();
                     break;
                 case 3:
+                    Console.Clear(); 
                     Product.ViewProductList();
                     Console.WriteLine("Enter product number: ");
                     int buyThis = Convert.ToInt32(Console.ReadLine());
@@ -37,22 +38,17 @@ namespace TheVendingMachine.Services
                     // Fetching the category name
                     var category = productToBuy.GetType().Name;
 
+                    // Instansierar ett objekt av produktkategorin
                     Product product = Product.CreateProduct(category);
+
+                    // 
                     IProduct iproduct = product.GetProduct(productToBuy.ProductName);
 
-                    iproduct.Buy();
+                    // Vid val av produkt ska användaren kunnas e produktens beskrivning innan man väljer att köpa varan:
                     iproduct.Description();
-                    Console.WriteLine("Are you sure you want to buy this product? ");
-                    Console.WriteLine("Press 1 to confirm and 0 to return to menu.");
-                    int confirm = Convert.ToInt32(Console.ReadLine());
-                    if (confirm == 1)
-                    {
-                        iproduct.Use();
-                    }
-                    else
-                    {
-                        StartMenu(); 
-                    }
+
+                    // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
+                    iproduct.Buy();
 
                     break; 
             }
@@ -76,21 +72,27 @@ namespace TheVendingMachine.Services
                     Console.WriteLine("Insert money");
                     break;
                 case 2:
+                    Console.Clear();
                     Product.ViewProductList();
                     Console.WriteLine("Enter product number: ");
-                    int buyThis = 1;
+                    int buyThis = Convert.ToInt32(Console.ReadLine());
 
                     var productToBuy = Product.products.Find(x => x.ProductId == buyThis);
 
+                    // Fetching the category name
                     var category = productToBuy.GetType().Name;
-                    Console.WriteLine(category);
 
+                    // Instansierar ett objekt av produktkategorin
                     Product product = Product.CreateProduct(category);
+
+                    // 
                     IProduct iproduct = product.GetProduct(productToBuy.ProductName);
 
-                    iproduct.Buy();
+                    // Vid val av produkt ska användaren kunnas e produktens beskrivning innan man väljer att köpa varan:
                     iproduct.Description();
-                    iproduct.Use();
+
+                    // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
+                    iproduct.Buy();
                     break;
                 default: 
                     break; 
