@@ -1,5 +1,6 @@
 ﻿using TheVendingMachine.Interfaces;
 using TheVendingMachine.Items;
+using TheVendingMachine.Services;
 
 
 
@@ -29,10 +30,6 @@ using TheVendingMachine.Items;
 //product.ProductCost = 15;
 
 
-
-
-
-
 AppleSoda soda = new AppleSoda();
 soda.AddProductInfo();
 LemonSorbet sorbet = new LemonSorbet();
@@ -47,16 +44,19 @@ berry.AddProductInfo();
 //soda.Buy();
 //soda.Use();
 
+Menus.StartMenu();
 
-int buyThis = 1;
+//int buyThis = 1;
 
-var productToBuy = Product.products.Find(x => x.ProductId == buyThis);
+//var productToBuy = Product.products.Find(x => x.ProductId == buyThis);
 
-var category = productToBuy.GetType().Name;
-Console.WriteLine(category);
+//var category = productToBuy.GetType().Name;
+//Console.WriteLine(category);
 
-Product product = Product.CreateProduct(category);
-IProduct iproduct = product.GetProduct(productToBuy.ProductName);
+//Product product = Product.CreateProduct(category);
+//IProduct iproduct = product.GetProduct(productToBuy.ProductName);
 
-iproduct.Buy(); 
+//iproduct.Buy();
+//iproduct.Description();
+//iproduct.Use(); 
 

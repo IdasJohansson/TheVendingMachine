@@ -55,7 +55,9 @@ namespace TheVendingMachine.Items
         {
             foreach (var item in products)
             {
-                Console.Write($"{item.ProductId} {item.ProductName} - ");
+                // OM man vill skriva ut varukategori
+                var category = item.GetType().Name;
+                Console.Write($"{category} {item.ProductId} {item.ProductName} - ");
                 Console.Write($"{item.ProductCost} kr - ");
                 Console.Write($"{item.ProductInfo} ");
                 Console.WriteLine();
