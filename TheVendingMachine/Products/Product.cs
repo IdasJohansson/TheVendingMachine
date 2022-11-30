@@ -34,6 +34,9 @@ namespace TheVendingMachine.Items
             set;
         }
 
+        // List off all products 
+        public static List<Product> products = new List<Product>();
+
         public abstract IProduct GetProduct(string Product);
      
 
@@ -46,6 +49,17 @@ namespace TheVendingMachine.Items
             else if (ProductCategory.Equals("Berry"))
                 return new Berry(); 
                 return null; 
+        }
+
+        public static void ViewProductList()
+        {
+            foreach (var item in products)
+            {
+                Console.Write($"{item.ProductId} {item.ProductName} - ");
+                Console.Write($"{item.ProductCost} kr - ");
+                Console.Write($"{item.ProductInfo} ");
+                Console.WriteLine();
+            }
         }
 
     }
