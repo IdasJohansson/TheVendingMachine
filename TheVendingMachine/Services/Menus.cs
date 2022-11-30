@@ -21,6 +21,7 @@ namespace TheVendingMachine.Services
 
             int input = Convert.ToInt32(Console.ReadLine());
 
+            bool loop = true; 
             switch (input)
             {
                 case 1:
@@ -31,22 +32,22 @@ namespace TheVendingMachine.Services
                 case 2:
                     Console.WriteLine("How much do you want to insert?");
                     Console.WriteLine("Accepted values are: 1, 5, 10 coins");
-                    bool loop = true; 
-                    while (loop)
+                    // Loopen ändras ej i InsertMoney
+                    while (loop == true)
                     {
                         Console.WriteLine("Feed machine, press 0 to continue.");
                         int insertedAmount = Convert.ToInt32(Console.ReadLine());
                         if (insertedAmount == 1 || insertedAmount == 5 || insertedAmount == 10)
                         {
-                            Wallet.InsertMoney(insertedAmount, loop);
+                            Wallet.InsertMoney(insertedAmount);
                         }
                         else if (insertedAmount == 0)
                         {
-                            loop = false; 
+                            loop = false;
                         }
                         else
                         {
-                            Console.Clear(); 
+                            Console.Clear();
                             Console.WriteLine("Insert a valid amount ");
                             break;
                         }

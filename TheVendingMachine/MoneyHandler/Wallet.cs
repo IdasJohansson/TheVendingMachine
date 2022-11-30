@@ -1,4 +1,5 @@
 ﻿using System;
+using TheVendingMachine.Services; 
 namespace TheVendingMachine.MoneyHandler
 {
 	public class Wallet
@@ -32,7 +33,7 @@ namespace TheVendingMachine.MoneyHandler
 
         public static int moneyInWallet = 30; 
 
-        public static bool InsertMoney(int amount, bool loop)
+        public static void InsertMoney(int amount)
         {
             // If wallet contains > amount
             if (moneyInWallet > amount)
@@ -40,15 +41,16 @@ namespace TheVendingMachine.MoneyHandler
                 moneyInWallet = moneyInWallet - amount; 
                 moneyInMachine.Add(amount);
                 Console.WriteLine($"Wallet contains: {moneyInWallet}");
-                loop = true;
-                return loop;
+            
             }
             // else "You don't have that amount in your wallet"
             else
             {
                 Console.WriteLine("You don't have that amount in your wallet");
-                loop = false;
-                return loop;
+                Console.WriteLine("Press a key to return to menu");
+                Console.ReadLine();
+                Console.Clear(); 
+                Menus.StartMenu(); 
             }
             
         }
