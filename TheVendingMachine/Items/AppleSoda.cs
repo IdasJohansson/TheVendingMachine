@@ -6,7 +6,7 @@ using TheVendingMachine.Services;
 
 namespace TheVendingMachine.Items
 {
-	public class AppleSoda : IProduct
+    public class AppleSoda : IProduct
     {
         public void AddProductInfo()
         {
@@ -41,40 +41,34 @@ namespace TheVendingMachine.Items
             // Visar hur mycket pengar det finns i plånboken samt i maskinen
             Wallet.ViewBalance();
 
-            if (true)
+            // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
+            Console.WriteLine("Are you sure you want to buy this product? ");
+            Console.WriteLine("Press 1 to confirm and 0 to return to menu.");
+
+            int confirm = Convert.ToInt32(Console.ReadLine());
+            if (confirm == 1)
             {
-                Console.WriteLine("Lets buy this product");
-                // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
-                Console.WriteLine("Are you sure you want to buy this product? ");
-                Console.WriteLine("Press 1 to confirm and 0 to return to menu.");
+                // Vid köpa av produkt ska produkten köpas och användas
+                Use();
+                Console.WriteLine("Press a key to return to menu");
+                Console.ReadKey();
 
-                int confirm = Convert.ToInt32(Console.ReadLine());
-                if (confirm == 1)
-                {
-                    // Vid köpa av produkt ska produkten köpas och användas
-                    Use();
-                    Console.WriteLine("Press a key to return to menu");
-                    Console.ReadKey();
-
-                    // Användaren tas tillbaka till menyn vid avslutat köp:
-                    Menus.StartMenu();
-                }
-                else
-                {
-                    // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
-                    Menus.StartMenu();
-                }
+                // Användaren tas tillbaka till menyn vid avslutat köp:
+                Menus.StartMenu();
             }
             else
             {
-                Console.WriteLine("Insert more money in machine");
+                // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
+                Menus.StartMenu();
             }
+
+
         }
 
         public void Use()
         {
             Console.WriteLine("Drink this soda!");
-       
+
         }
     }
 }

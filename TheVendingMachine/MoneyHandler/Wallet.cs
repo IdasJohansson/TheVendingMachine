@@ -1,4 +1,5 @@
 ﻿using System;
+using TheVendingMachine.Interfaces;
 using TheVendingMachine.Items;
 using TheVendingMachine.Services; 
 namespace TheVendingMachine.MoneyHandler
@@ -62,6 +63,44 @@ namespace TheVendingMachine.MoneyHandler
           
         }
 
+        public static void MakePurchase()
+        {
+            Console.WriteLine("Enter product number: ");
+            int buyThis = Convert.ToInt32(Console.ReadLine());
+
+            // Går in i listan med produkter och hämtar objektet med id't som användaren har angett?
+            var productToBuy = Product.products.Find(x => x.ProductId == buyThis);
+
+            // Hämtar kategorinamnet
+            var category = productToBuy.GetType().Name;
+
+            // Instansierar ett objekt av produktkategorin
+            Product product = Product.CreateProduct(category);
+
+            // skapar ett objekt med namnet på den hämtade produkten.....ish 
+            IProduct iproduct = product.GetProduct(productToBuy.ProductName);
+
+            // Vid köp av produkt så skall en kontroll ske; att användaren har
+            // matat in tillräckligt med pengar till automaten.Om inte så
+            // stoppas köpet.
+            var cost = productToBuy.ProductCost;
+            var checkbalance = Wallet.CheckBalance(cost);
+            if (checkbalance)
+            {
+                // Vid val av produkt ska användaren kunnas e produktens beskrivning innan man väljer att köpa varan:
+                iproduct.Description();
+
+                // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
+                iproduct.Buy();
+            }
+            else
+            {
+                Console.WriteLine("You need to insert more money");
+                Console.WriteLine();
+                Wallet.InsertMoney();
+            }
+        }
+
         public static void InsertMoney()
         {
             bool loop = true;
@@ -93,8 +132,8 @@ namespace TheVendingMachine.MoneyHandler
                 // För att gå tillbaka till menyn
                 else if (insertedAmount == 0)
                 {
-                    Console.Clear(); 
-                    loop = false;
+                    Console.Clear();
+                    Menus.StartMenu(); 
                 }
                 // Om användaren väljer ett annat belopp än 1, 5 eller 10
                 else
@@ -104,7 +143,10 @@ namespace TheVendingMachine.MoneyHandler
                 }
 
             }
+
         }
+
+       
     }
 }
 

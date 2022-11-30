@@ -20,11 +20,11 @@ namespace TheVendingMachine.Services
             Console.WriteLine("[0] Turn machine off");
             Console.WriteLine();
 
+            // Visar upp pengarna
             Wallet.ViewBalance(); 
 
             int input = Convert.ToInt32(Console.ReadLine());
 
-            bool loop = true; 
             switch (input)
             {
                 case 1:
@@ -40,38 +40,41 @@ namespace TheVendingMachine.Services
                     Console.Clear();
                     // Visar lista av alla produkter: 
                     Product.ViewProductList();
-                    Console.WriteLine("Enter product number: ");
-                    int buyThis = Convert.ToInt32(Console.ReadLine());
+                    Wallet.MakePurchase(); 
+                    //Console.WriteLine("Enter product number: ");
+                    //int buyThis = Convert.ToInt32(Console.ReadLine());
 
-                    // Går in i listan med produkter och hämtar objektet med id't som användaren har angett?
-                    var productToBuy = Product.products.Find(x => x.ProductId == buyThis);
+                    //// Går in i listan med produkter och hämtar objektet med id't som användaren har angett?
+                    //var productToBuy = Product.products.Find(x => x.ProductId == buyThis);
 
-                    // Hämtar kategorinamnet
-                    var category = productToBuy.GetType().Name;
+                    //// Hämtar kategorinamnet
+                    //var category = productToBuy.GetType().Name;
 
-                    // Instansierar ett objekt av produktkategorin
-                    Product product = Product.CreateProduct(category);
+                    //// Instansierar ett objekt av produktkategorin
+                    //Product product = Product.CreateProduct(category);
 
-                    // skapar ett objekt med namnet på den hämtade produkten.....ish 
-                    IProduct iproduct = product.GetProduct(productToBuy.ProductName);
+                    //// skapar ett objekt med namnet på den hämtade produkten.....ish 
+                    //IProduct iproduct = product.GetProduct(productToBuy.ProductName);
 
-                    // Vid köp av produkt så skall en kontroll ske; att användaren har
-                    // matat in tillräckligt med pengar till automaten.Om inte så
-                    // stoppas köpet.
-                    var cost = productToBuy.ProductCost;
-                    var checkbalance = Wallet.CheckBalance(cost);
-                    if (checkbalance)
-                    {
-                        // Vid val av produkt ska användaren kunnas e produktens beskrivning innan man väljer att köpa varan:
-                        iproduct.Description();
+                    //// Vid köp av produkt så skall en kontroll ske; att användaren har
+                    //// matat in tillräckligt med pengar till automaten.Om inte så
+                    //// stoppas köpet.
+                    //var cost = productToBuy.ProductCost;
+                    //var checkbalance = Wallet.CheckBalance(cost);
+                    //if (checkbalance)
+                    //{
+                    //    // Vid val av produkt ska användaren kunnas e produktens beskrivning innan man väljer att köpa varan:
+                    //    iproduct.Description();
 
-                        // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
-                        iproduct.Buy();
-                    }
-                    else
-                    {
-                        Console.WriteLine("You need to insert more money");
-                    }
+                    //    // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
+                    //    iproduct.Buy();
+                    //}
+                    //else
+                    //{
+                    //    Console.WriteLine("You need to insert more money");
+                    //    Console.WriteLine();
+                    //    Wallet.InsertMoney();
+                    //}
                     break;
                 case 0:
                     EndMessage(); 
@@ -100,34 +103,7 @@ namespace TheVendingMachine.Services
                     ViewProductsMenu();
                     break; 
                 case 2:
-                    Console.Clear();
-                    Product.ViewProductList();
-                    Console.WriteLine("Enter product number: ");
-                    int buyThis = Convert.ToInt32(Console.ReadLine());
-
-                    // Går in i listan med producter och hämtar det objekt med samma id som användaren har skrivit in
-                    var productToBuy = Product.products.Find(x => x.ProductId == buyThis);
-
-                    // Hämtar kategori namnet på den valda produkten
-                    var category = productToBuy.GetType().Name;
-
-                    // Instansierar ett objekt av produktkategorin
-                    Product product = Product.CreateProduct(category);
-
-                    // 
-                    IProduct iproduct = product.GetProduct(productToBuy.ProductName);
-
-                    // Vid köp av produkt så skall en kontroll ske; att användaren har
-                    // matat in tillräckligt med pengar till automaten.Om inte så
-                    // stoppas köpet.
-
-                
-
-                    // Vid val av produkt ska användaren kunnas se produktens beskrivning innan man väljer att köpa varan:
-                    iproduct.Description();
-
-                    // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
-                    iproduct.Buy();
+                    Wallet.MakePurchase();
                     break;
                 case 3:
                     Console.Clear(); 
@@ -145,6 +121,34 @@ namespace TheVendingMachine.Services
         {
             Console.Clear(); 
             Console.WriteLine("Thank you for using this SUPER AMAZING VENDING MACHINE");
+
+            // Hämtar listan med maskinens pengar
+            var returnMoney = Wallet.moneyInMachine;
+
+         
+
+            // Om listan inte innehåller några pengar
+            if (returnMoney.Count() == 0)
+            {
+                Console.WriteLine("Machine contains no money");
+            }
+            else
+            {
+                // ---> Kvar att göra
+                // När köp är avslutade så återlämnas återstående
+                // inmatad summa i högsta valörer möjliga. 1, 5, 10, 20, 50, 100.
+
+                // Kanske ska sortera listan på något sätt?
+                // och returnera pengarna in i plånboken. 
+
+                Console.WriteLine("Below coins are returned to your wallet: ");
+                // Skriver ut resterande pengar i maskinen
+                foreach (var item in returnMoney)
+                {
+                    Console.WriteLine(item);
+                }
+            }
+
             Console.WriteLine("Press a key to turn me off");
             Console.ReadKey();
 
