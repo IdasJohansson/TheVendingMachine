@@ -1,6 +1,7 @@
 ﻿using System;
 using TheVendingMachine.Interfaces;
 using TheVendingMachine.Items;
+using TheVendingMachine.MoneyHandler;
 
 namespace TheVendingMachine.Services
 {
@@ -26,6 +27,32 @@ namespace TheVendingMachine.Services
                     Console.Clear();
                     Product.ViewProductList();
                     ViewProductsMenu();
+                    break;
+                case 2:
+                    Console.WriteLine("How much do you want to insert?");
+                    Console.WriteLine("Accepted values are: 1, 5, 10 coins");
+                    bool loop = true; 
+                    while (loop)
+                    {
+                        Console.WriteLine("Feed machine, press 0 to continue.");
+                        int insertedAmount = Convert.ToInt32(Console.ReadLine());
+                        if (insertedAmount == 1 || insertedAmount == 5 || insertedAmount == 10)
+                        {
+                            Wallet.InsertMoney(insertedAmount, loop);
+                        }
+                        else if (insertedAmount == 0)
+                        {
+                            loop = false; 
+                        }
+                        else
+                        {
+                            Console.Clear(); 
+                            Console.WriteLine("Insert a valid amount ");
+                            break;
+                        }
+                    }
+
+
                     break;
                 case 3:
                     Console.Clear(); 
