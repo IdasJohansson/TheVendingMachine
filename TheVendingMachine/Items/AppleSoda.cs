@@ -11,12 +11,10 @@ namespace TheVendingMachine.Items
         public void AddProductInfo()
         {
             // Creating a Soda objekt
-            Product product = null;
-            product = Product.CreateProduct("Soda");
+            Product product = Product.CreateProduct("Soda");
 
             // Getting a Soda objekt of the type AppleSoda
-            IProduct iproduct = null;
-            iproduct = product.GetProduct("AppleSoda");
+            IProduct iproduct = product.GetProduct("AppleSoda");
 
             // Giving the AppleSoda objekt values
             product.ProductId = 1;
@@ -24,51 +22,56 @@ namespace TheVendingMachine.Items
             product.ProductInfo = "330ml";
             product.ProductCost = 15;
 
-            // Objekt to List of products 
+            // Add produkt Objekt to List of products (in Product class)
             Product.products.Add(product);
-
         }
 
         public void Description()
         {
-            Console.Write("Product description: ");
-            Console.WriteLine("This is a soda made of Apples");
+            DateTime date = DateTime.Now;
+            DateTime bestBefore = date.AddYears(1);
+            string info = $"Product information: This softdrink contains carbonated soda, sugar and fruitjuice extracted from Apples harvested in the southern of Sweden. Best-before date: {bestBefore.ToString("dd-MM-yyyy")} ";
             Console.WriteLine();
+            Console.WriteLine(info);
         }
 
         public void Buy()
         {
-            // Visar hur mycket pengar det finns i plånboken samt i maskinen
-            Wallet.ViewBalance();
-
-            // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
-            Console.WriteLine("Are you sure you want to buy this product? ");
-            Console.WriteLine("Press 1 to confirm and 0 to return to menu.");
-
-            int confirm = Convert.ToInt32(Console.ReadLine());
-            if (confirm == 1)
-            {
-                // Vid köpa av produkt ska produkten köpas och användas
-                Use();
-                Console.WriteLine("Press a key to return to menu");
-                Console.ReadKey();
-
-                // Användaren tas tillbaka till menyn vid avslutat köp:
-                Menus.StartMenu();
-            }
-            else
+            try
             {
                 // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
-                Menus.StartMenu();
+                Console.WriteLine();
+                Console.WriteLine("Are you sure you want to buy this product? ");
+                Console.WriteLine("Press 1 to confirm and 0 to return to menu.");
+                Console.WriteLine();
+
+                int confirm = Convert.ToInt32(Console.ReadLine());
+                if (confirm == 1)
+                {
+                    // Vid köpa av produkt ska produkten köpas och användas
+                    // Användaren tas tillbaka till menyn vid avslutat köp:
+                    Use();
+                }
+                else
+                {
+                    // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
+                    Menus.StartMenu();
+                }
+
             }
-
-
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Helper.ReturnMenuMessage(); 
+            }
         }
 
         public void Use()
         {
-            Console.WriteLine("Drink this soda!");
-
+            Console.Clear();
+            Console.WriteLine("Purchase confirmed");
+            Console.WriteLine("Klunk klunk klunk...Oh so Fresh!");
+            Helper.ReturnMenuMessage();
         }
     }
 }

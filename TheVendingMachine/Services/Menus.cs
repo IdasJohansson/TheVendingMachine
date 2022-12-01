@@ -10,110 +10,95 @@ namespace TheVendingMachine.Services
 	{
 		public static void StartMenu()
 		{
-            Console.WriteLine("WELCOME TO THIS SUPERAMAZING VENDING MACHINE");
-            Console.WriteLine();
-
-            Console.WriteLine("Please select one of below options: ");
-            Console.WriteLine("[1] Display items");
-            Console.WriteLine("[2] Insert money");
-            Console.WriteLine("[3] Purchase");
-            Console.WriteLine("[0] Turn machine off");
-            Console.WriteLine();
-
-            // Visar upp pengarna
-            Wallet.ViewBalance(); 
-
-            int input = Convert.ToInt32(Console.ReadLine());
-
-            switch (input)
+            try
             {
-                case 1:
-                    Console.Clear();
-                    Product.ViewProductList();
-                    ViewProductsMenu();
-                    break;
-                case 2:
-                    Wallet.InsertMoney();
-                    ViewProductsMenu(); 
-                    break;
-                case 3:
-                    Console.Clear();
-                    // Visar lista av alla produkter: 
-                    Product.ViewProductList();
-                    Wallet.MakePurchase(); 
-                    //Console.WriteLine("Enter product number: ");
-                    //int buyThis = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("WELCOME TO THIS SUPERAMAZING VENDING MACHINE");
+                Console.WriteLine();
 
-                    //// Går in i listan med produkter och hämtar objektet med id't som användaren har angett?
-                    //var productToBuy = Product.products.Find(x => x.ProductId == buyThis);
+                Console.WriteLine("Please select one of below options: ");
+                Console.WriteLine("[1] Display items");
+                Console.WriteLine("[2] Insert money");
+                Console.WriteLine("[3] Purchase");
+                Console.WriteLine("[0] Turn machine off");
+                Console.WriteLine();
 
-                    //// Hämtar kategorinamnet
-                    //var category = productToBuy.GetType().Name;
+                // Visar upp pengarna
+                Wallet.ViewBalance(); 
 
-                    //// Instansierar ett objekt av produktkategorin
-                    //Product product = Product.CreateProduct(category);
+                int input = Convert.ToInt32(Console.ReadLine());
 
-                    //// skapar ett objekt med namnet på den hämtade produkten.....ish 
-                    //IProduct iproduct = product.GetProduct(productToBuy.ProductName);
-
-                    //// Vid köp av produkt så skall en kontroll ske; att användaren har
-                    //// matat in tillräckligt med pengar till automaten.Om inte så
-                    //// stoppas köpet.
-                    //var cost = productToBuy.ProductCost;
-                    //var checkbalance = Wallet.CheckBalance(cost);
-                    //if (checkbalance)
-                    //{
-                    //    // Vid val av produkt ska användaren kunnas e produktens beskrivning innan man väljer att köpa varan:
-                    //    iproduct.Description();
-
-                    //    // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
-                    //    iproduct.Buy();
-                    //}
-                    //else
-                    //{
-                    //    Console.WriteLine("You need to insert more money");
-                    //    Console.WriteLine();
-                    //    Wallet.InsertMoney();
-                    //}
-                    break;
-                case 0:
-                    EndMessage(); 
-                    break;
-                default:
-                    break; 
+                switch (input)
+                {
+                    case 1:
+                        Console.Clear();
+                        Product.ViewProductList();
+                        ViewProductsMenu();
+                        break;
+                    case 2:
+                        Wallet.InsertMoney();
+                        ViewProductsMenu(); 
+                        break;
+                    case 3:
+                        Console.Clear();
+                        // Visar lista av alla produkter: 
+                        Product.ViewProductList();
+                        Wallet.MakePurchase(); 
+                        break;
+                    case 0:
+                        EndMessage(); 
+                        break;
+                    default:
+                        Helper.ErrorColor("Invalid input!");
+                        Helper.ReturnMenuMessage();
+                        break; 
+                }
+            }
+            catch (Exception e)
+            {
+                Helper.ErrorColor(e.Message);
+                Helper.ReturnMenuMessage(); 
             }
         }
 
 
         public static void ViewProductsMenu()
         {
-            Console.WriteLine();
-            Console.WriteLine("What would you like to do?");
-            Console.WriteLine("[1] Insert money");
-            Console.WriteLine("[2] Purchase");
-            Console.WriteLine("[3] Return to start");
-            Console.WriteLine("[0] Turn machine off");
-
-            int input = Convert.ToInt32(Console.ReadLine());
-   
-            switch (input)
+            try
             {
-                case 1:
-                    Wallet.InsertMoney();
-                    ViewProductsMenu();
-                    break; 
-                case 2:
-                    Wallet.MakePurchase();
-                    break;
-                case 3:
-                    Console.Clear(); 
-                    Menus.StartMenu(); 
-                    break;
-                case 0:
-                    EndMessage(); 
-                    break; 
-                default: 
-                    break; 
+                Console.WriteLine();
+                Console.WriteLine("What would you like to do?");
+                Console.WriteLine("[1] Insert money");
+                Console.WriteLine("[2] Purchase");
+                Console.WriteLine("[3] Return to start");
+                Console.WriteLine("[0] Turn machine off");
+
+                int input = Convert.ToInt32(Console.ReadLine());
+   
+                switch (input)
+                {
+                    case 1:
+                        Wallet.InsertMoney();
+                        ViewProductsMenu();
+                        break; 
+                    case 2:
+                        Wallet.MakePurchase();
+                        break;
+                    case 3:
+                        Console.Clear(); 
+                        StartMenu(); 
+                        break;
+                    case 0:
+                        EndMessage(); 
+                        break; 
+                    default:
+                        Helper.ErrorColor("Invalid input!");
+                        Helper.ReturnMenuMessage(); 
+                        break; 
+                }
+            }
+            catch (Exception e)
+            {
+                Helper.ErrorColor(e.Message);
             }
         }
 
@@ -148,11 +133,12 @@ namespace TheVendingMachine.Services
                 //{
                 //    Console.WriteLine(item);
                 //}
- 
             }
-
             Console.WriteLine("Press a key to turn me off");
+            Console.WriteLine();
             Console.ReadKey();
+            // För att säkerställa att programmet avslutas: 
+            Environment.Exit(-1);
         }
     }
 }

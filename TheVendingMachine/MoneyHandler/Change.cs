@@ -23,7 +23,7 @@ namespace TheVendingMachine.MoneyHandler
             Five = (moneyToReturn / 5);
             moneyToReturn %= 5;
             One = (moneyToReturn / 1);
-            moneyToReturn %= 1;
+            //moneyToReturn %= 1;
         }
 
 		public static void ReturnMoney(int returnSum)

@@ -23,7 +23,6 @@ namespace TheVendingMachine.MoneyHandler
         public static bool CheckBalance(int productCost)
         {
             var sumInMachine = moneyInMachine.Sum();
-            //var productCost = Product.products[0].ProductCost; 
 
             Console.WriteLine("Current money inserted in machine:");
             Console.WriteLine(sumInMachine);
@@ -46,7 +45,7 @@ namespace TheVendingMachine.MoneyHandler
             try
             {
             Console.WriteLine();
-            Console.WriteLine("Enter number of the product you want to Buy:: ");
+            Console.WriteLine("Enter number of the product you want to Buy: ");
             int buyThis = Convert.ToInt32(Console.ReadLine());
 
             // Går in i listan med produkter och hämtar objektet med id't som användaren har angett?
@@ -66,7 +65,8 @@ namespace TheVendingMachine.MoneyHandler
             // stoppas köpet.
             var cost = productToBuy.ProductCost;
             var checkbalance = CheckBalance(cost);
-            if (checkbalance)
+
+            if (checkbalance == true)
             {
                 // Vid val av produkt ska användaren kunnas e produktens beskrivning innan man väljer att köpa varan:
                 iproduct.Description();
@@ -76,64 +76,68 @@ namespace TheVendingMachine.MoneyHandler
             }
             else
             {
-                Console.WriteLine("You need to insert more money");
-                Console.WriteLine();
+                Helper.ErrorColor("You need to enter more money...Press a key to continue");
+                Console.ReadKey(); 
                 InsertMoney();
             }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-
+                Helper.ErrorColor(e.Message);
+                Helper.ReturnMenuMessage(); 
             }
-
         }
 
         public static void InsertMoney()
         {
-            Console.Clear(); 
-            bool loop = true;
-            Console.WriteLine("How much do you want to insert?");
-            Console.WriteLine("Accepted values are: 1, 5, 10 coins");
-            while (loop == true)
+            try
             {
-                Console.WriteLine("Feed the machine or press [0] to return to menu.");
-                int insertedAmount = Convert.ToInt32(Console.ReadLine());
-                if (insertedAmount == 1 || insertedAmount == 5 || insertedAmount == 10)
+                Console.Clear(); 
+                bool loop = true;
+                Console.WriteLine("How much do you want to insert?");
+                Console.WriteLine("Accepted values are: 1, 5, 10 coins");
+                while (loop == true)
                 {
-                    // Kollar om plånboken innehåller summan man vill lägga in i maskinen 
-                    if (moneyInWallet > insertedAmount)
+                    Console.WriteLine("Feed the machine or press [0] to return to menu.");
+                    int insertedAmount = Convert.ToInt32(Console.ReadLine());
+                    if (insertedAmount == 1 || insertedAmount == 5 || insertedAmount == 10)
                     {
-                        moneyInWallet = moneyInWallet - insertedAmount;
-                        moneyInMachine.Add(insertedAmount);
-                        ViewBalance();
-
+                        // Kollar om plånboken innehåller summan man vill lägga in i maskinen 
+                        if (moneyInWallet >= insertedAmount)
+                        {
+                            moneyInWallet = moneyInWallet - insertedAmount;
+                            moneyInMachine.Add(insertedAmount);
+                            ViewBalance();
+                        }
+                        // Om man inte har tillräckligt med pengar i plånboken
+                        else
+                        {
+                            Helper.ErrorColor("You don't have that amount in your wallet");
+                            Helper.ReturnMenuMessage(); 
+                        }
                     }
-                    // Om man inte har tillräckligt med pengar i plånboken
-                    else
+                    // För att gå tillbaka till menyn
+                    else if (insertedAmount == 0)
                     {
-                        Console.WriteLine("You don't have that amount in your wallet");
-                        Console.WriteLine("Press a key to return to menu");
-                        Console.ReadLine();
+                        Console.Clear();
+                        loop = false;
                         Menus.StartMenu();
                     }
-                }
-                // För att gå tillbaka till menyn
-                else if (insertedAmount == 0)
-                {
-                    Console.Clear();
-                    Menus.StartMenu(); 
-                }
-                // Om användaren väljer ett annat belopp än 1, 5 eller 10
-                else
-                {
-                    Console.Clear();
-                    Console.WriteLine("Insert a valid amount ");
-                }
-
+                    // Om användaren väljer ett annat belopp än 1, 5 eller 10
+                    else
+                    {
+                        Console.Clear();
+                        Helper.ErrorColor("Insert a valid amout (1, 5 or 10)");
+                    }
+                 }
+            }
+            catch (Exception e)
+            {
+                Helper.ErrorColor(e.Message);
+                Helper.ReturnMenuMessage(); 
             }
 
-        }
-
+            }
        
     }
 }
