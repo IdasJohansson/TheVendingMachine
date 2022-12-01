@@ -6,28 +6,6 @@ namespace TheVendingMachine.MoneyHandler
 {
     public class Wallet
     {
-        //private int oneSEK = 1 * 10;
-        //private int fiveSEK = 5 * 10;
-        //private int tenSEK = 10 * 10;
-
-        //public int OneSEK
-        //{
-        //    get { return oneSEK; }
-        //    set { oneSEK = value; }
-        //}
-
-        //public int FiveSEK
-        //{
-        //    get { return fiveSEK; }
-        //    set { fiveSEK = value; }
-        //}
-
-        //public int TenSEK
-        //{
-        //    get { return tenSEK; }
-        //    set { tenSEK = value; }
-        //}
-
         public static int oneSek = 10 * 1;
         public static int fiveSek = 10 * 5;
         public static int tenSek = 10 * 10;
@@ -65,7 +43,10 @@ namespace TheVendingMachine.MoneyHandler
 
         public static void MakePurchase()
         {
-            Console.WriteLine("Enter product number: ");
+            try
+            {
+            Console.WriteLine();
+            Console.WriteLine("Enter number of the product you want to Buy:: ");
             int buyThis = Convert.ToInt32(Console.ReadLine());
 
             // Går in i listan med produkter och hämtar objektet med id't som användaren har angett?
@@ -84,7 +65,7 @@ namespace TheVendingMachine.MoneyHandler
             // matat in tillräckligt med pengar till automaten.Om inte så
             // stoppas köpet.
             var cost = productToBuy.ProductCost;
-            var checkbalance = Wallet.CheckBalance(cost);
+            var checkbalance = CheckBalance(cost);
             if (checkbalance)
             {
                 // Vid val av produkt ska användaren kunnas e produktens beskrivning innan man väljer att köpa varan:
@@ -97,12 +78,19 @@ namespace TheVendingMachine.MoneyHandler
             {
                 Console.WriteLine("You need to insert more money");
                 Console.WriteLine();
-                Wallet.InsertMoney();
+                InsertMoney();
             }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
         }
 
         public static void InsertMoney()
         {
+            Console.Clear(); 
             bool loop = true;
             Console.WriteLine("How much do you want to insert?");
             Console.WriteLine("Accepted values are: 1, 5, 10 coins");

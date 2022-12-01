@@ -1,5 +1,6 @@
 ﻿using TheVendingMachine.Interfaces;
 using TheVendingMachine.Items;
+using TheVendingMachine.MoneyHandler;
 using TheVendingMachine.Services;
 
 
@@ -30,12 +31,15 @@ using TheVendingMachine.Services;
 //product.ProductCost = 15;
 
 
+
 AppleSoda soda = new AppleSoda();
 soda.AddProductInfo();
 LemonSorbet sorbet = new LemonSorbet();
 sorbet.AddProductInfo();
 Raspberry berry = new Raspberry();
 berry.AddProductInfo();
+
+Menus.StartMenu();
 
 // writes out the added products previously added products in the list
 // Product.ViewProductList();
@@ -44,7 +48,7 @@ berry.AddProductInfo();
 //soda.Buy();
 //soda.Use();
 
-Menus.StartMenu();
+
 
 //int buyThis = 1;
 

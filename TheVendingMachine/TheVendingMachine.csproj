@@ -11,10 +11,12 @@
     <None Remove="Interfaces\" />
     <None Remove="Services\" />
     <None Remove="MoneyHandler\" />
+    <None Remove="Categories\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="Services\" />
     <Folder Include="MoneyHandler\" />
+    <Folder Include="Categories\" />
   </ItemGroup>
 </Project>

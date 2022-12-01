@@ -122,40 +122,37 @@ namespace TheVendingMachine.Services
             Console.Clear(); 
             Console.WriteLine("Thank you for using this SUPER AMAZING VENDING MACHINE");
 
-            // Hämtar listan med maskinens pengar
-            var returnMoney = Wallet.moneyInMachine;
+            // Hämtar listan med maskinens pengar summerat
+            var returnMoney = Wallet.moneyInMachine.Sum();
 
-         
-
-            // Om listan inte innehåller några pengar
-            if (returnMoney.Count() == 0)
+            // Om listan(maskinen) inte innehåller några pengar
+            if (returnMoney == 0)
             {
-                Console.WriteLine("Machine contains no money");
+                Console.WriteLine("Machine contains no money.");
             }
             else
             {
-                // ---> Kvar att göra
+                // När användaren väljer att avsluta programmet skall kvarstående
+                // pengar i automaten returneras till avsändaren. Skriv ut hur
+                // mycket pengar som returneras samt i vilken valör.
+
                 // När köp är avslutade så återlämnas återstående
                 // inmatad summa i högsta valörer möjliga. 1, 5, 10, 20, 50, 100.
 
-                // Kanske ska sortera listan på något sätt?
-                // och returnera pengarna in i plånboken. 
+                Change.ReturnMoney(returnMoney); 
 
-                Console.WriteLine("Below coins are returned to your wallet: ");
-                // Skriver ut resterande pengar i maskinen
-                foreach (var item in returnMoney)
-                {
-                    Console.WriteLine(item);
-                }
+                // Detta returnerar alla mynt som är isatta i maskinen genom att skriva ut allt i listan var returnMoney = Wallet.moneyInMachine; 
+                //Console.WriteLine("Below coins are returned to your wallet: ");
+                //// Skriver ut resterande pengar i maskinen
+                //foreach (var item in returnMoney)
+                //{
+                //    Console.WriteLine(item);
+                //}
+ 
             }
 
             Console.WriteLine("Press a key to turn me off");
             Console.ReadKey();
-
-            // ----> Kvar att göra :) 
-            // När användaren väljer att avsluta programmet skall kvarstående
-            // pengar i automaten returneras till avsändaren. Skriv ut hur
-            // mycket pengar som returneras samt i vilken valör.
         }
     }
 }
