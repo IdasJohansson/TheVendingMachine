@@ -29,7 +29,7 @@ namespace TheVendingMachine.Items
             set { productCost = value; }
         }
 
-
+  
         public override IProduct GetProduct(string ProductItemType)
         {
             if (ProductItemType.Equals("Raspberry"))
@@ -37,6 +37,7 @@ namespace TheVendingMachine.Items
             else
                 return null;
         }
+
 
     }
 }
