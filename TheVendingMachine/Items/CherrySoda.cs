@@ -9,14 +9,14 @@ namespace TheVendingMachine.Items
 
 		//Product product = Product.CreateProduct("Soda");
 
-        public override int ProductId { get; set; }
-        public override string ProductName { get; set; }
-        public override string ProductInfo { get; set; }
-        public override int ProductCost { get; set; }
+		public override int ProductId { get; set; }
+		public override string ProductName { get; set; }
+		public override string ProductInfo { get; set; }
+		public override int ProductCost { get; set; }
 
-        //Soda soda = new Soda(10,"Cherry", "3liter", 20);
+		//Soda soda = new Soda(10,"Cherry", "3liter", 20);
 
-        public CherrySoda()
+		public CherrySoda()
 		{ }
 
         public CherrySoda(int productId, string productName, string productInfo, int productCost)
@@ -33,8 +33,6 @@ namespace TheVendingMachine.Items
 		{
 			return new Soda(10, "ApelsinSoda", "3liter", 20); 
 		}
-
-
 
         public void Description()
 		{ }
