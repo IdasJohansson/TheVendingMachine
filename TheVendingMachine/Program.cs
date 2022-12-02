@@ -27,14 +27,25 @@ using TheVendingMachine.Services;
 //product.ProductInfo = "330ml"; 
 //product.ProductCost = 15;
 
-AppleSoda soda = new AppleSoda();
-soda.AddProductInfo();
-BlackcurrantSoda secondSoda = new BlackcurrantSoda();
-secondSoda.AddProductInfo(); 
-LemonSorbet sorbet = new LemonSorbet();
-sorbet.AddProductInfo();
-Raspberry berry = new Raspberry();
-berry.AddProductInfo();
+AppleSoda appleSoda = new AppleSoda();
+appleSoda.AddProductInfo();
+BlackcurrantSoda blackcurrantSoda = new BlackcurrantSoda();
+blackcurrantSoda.AddProductInfo(); 
+LemonSorbet lemonSorbet = new LemonSorbet();
+lemonSorbet.AddProductInfo();
+Raspberry raspberry = new Raspberry();
+raspberry.AddProductInfo();
+Strawberry strawberry = new Strawberry();
+strawberry.AddProductInfo();
+
+CherrySoda soda = new CherrySoda();
+soda.CreateSoda();
+
+CherrySoda cherry = new CherrySoda();
+Product.products.Add(cherry);
+
+cherry.GetProduct("CherrySoda"); 
+
 
 Menus.StartMenu();
 

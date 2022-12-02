@@ -24,9 +24,9 @@ namespace TheVendingMachine.MoneyHandler
         public static bool CheckBalance(int productCost)
         {
             Console.WriteLine();
-            Console.Write("Current money inserted in machine:");
+            Console.Write("Current money inserted in machine: ");
             Console.WriteLine(moneyInMachine);
-            Console.Write("Product cost:");
+            Console.Write("Product cost: ");
             Console.WriteLine(productCost);
 
             // Kollar så att pengarna som går att använda i maskinen är större än produktkostnaden

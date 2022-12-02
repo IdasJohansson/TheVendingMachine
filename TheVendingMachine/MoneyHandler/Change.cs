@@ -40,7 +40,7 @@ namespace TheVendingMachine.MoneyHandler
             Console.WriteLine($"Fives: {change.Five} (* 5 kr)");
             Console.WriteLine($"Ones: {change.One} (* 1 kr)");
             Console.WriteLine();
-            Console.WriteLine($"Sum returned:{returnSum}");
+            Console.WriteLine($"Sum returned: {returnSum}");
         }
 
 

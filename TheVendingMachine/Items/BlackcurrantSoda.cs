@@ -75,6 +75,7 @@ namespace TheVendingMachine.Items
         {
             Console.Clear();
             Console.WriteLine("Purchase confirmed");
+            Helper.SodaSymbol();
             Console.WriteLine("Klunk klunk klunk...Oh so Fresh!");
             Helper.ReturnMenuMessage();
         }

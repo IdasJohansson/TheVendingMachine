@@ -29,22 +29,33 @@ namespace TheVendingMachine.Items
             set { productCost = value; }
         }
 
+        public Soda()
+        {
 
+        }
+
+        public Soda(int productId, string productName, string productInfo, int productCost )
+        {
+            this.ProductId = productId;
+            this.ProductName = productName;
+            this.ProductInfo = productInfo;
+            this.ProductCost = productCost;
+            products.Add(this); 
+        }
+
+        // Använder ej denna metod atm 
         public override IProduct GetProduct(string ProductItemType)
         {
-            // Addera toUpper
+            // Addera toUpper för att förbättra
             if (ProductItemType.Equals("AppleSoda"))
                 return new AppleSoda();
             if (ProductItemType.Equals("BlackcurrantSoda"))
                 return new BlackcurrantSoda();
+            if (ProductItemType.Equals("CherrySoda"))
+                return new CherrySoda();
             else
                 return null;
         }
-
-     
-
-
-
 
     }
 }
