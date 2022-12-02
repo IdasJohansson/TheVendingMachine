@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text.RegularExpressions;
-using TheVendingMachine.Interfaces;
+﻿
 using TheVendingMachine.Items;
 using TheVendingMachine.MoneyHandler;
 
@@ -13,6 +11,7 @@ namespace TheVendingMachine.Services
             try
             {
                 Console.WriteLine("WELCOME TO THIS SUPERAMAZING VENDING MACHINE");
+                Console.WriteLine("In this machine you can buy Sodas, Sorbets or Berries");
                 Console.WriteLine();
 
                 Console.WriteLine("Please select one of below options: ");
@@ -31,7 +30,8 @@ namespace TheVendingMachine.Services
                 {
                     case 1:
                         Console.Clear();
-                        Product.ViewProductList();
+                        Product.ViewCategories(); 
+                        //Product.ViewProductList();
                         ViewProductsMenu();
                         break;
                     case 2:
@@ -41,7 +41,9 @@ namespace TheVendingMachine.Services
                     case 3:
                         Console.Clear();
                         // Visar lista av alla produkter: 
-                        Product.ViewProductList();
+                        //Product.ViewProductList();
+                        Product.ViewCategories();
+                        // Skickar vidare till Villkoren för att genomföra ett köp
                         Wallet.MakePurchase(); 
                         break;
                     case 0:
@@ -125,14 +127,6 @@ namespace TheVendingMachine.Services
                 // inmatad summa i högsta valörer möjliga. 1, 5, 10, 20, 50, 100.
 
                 Change.ReturnMoney(returnMoney); 
-
-                // Detta returnerar alla mynt som är isatta i maskinen genom att skriva ut allt i listan var returnMoney = Wallet.moneyInMachine; 
-                //Console.WriteLine("Below coins are returned to your wallet: ");
-                //// Skriver ut resterande pengar i maskinen
-                //foreach (var item in returnMoney)
-                //{
-                //    Console.WriteLine(item);
-                //}
             }
             Console.WriteLine("Press a key to turn me off");
             Console.WriteLine();

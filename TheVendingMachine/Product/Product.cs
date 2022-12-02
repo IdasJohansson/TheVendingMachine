@@ -51,20 +51,51 @@ namespace TheVendingMachine.Items
                 return null; 
         }
 
-        public static void ViewProductList()
+        public static void ViewCategories()
         {
-            foreach (var item in products)
+            Console.WriteLine("Select category:");
+
+            Console.WriteLine("[1] SODA");
+            Console.WriteLine("[2] SORBET");
+            Console.WriteLine("[3] BERRY");
+            int input = Convert.ToInt32(Console.ReadLine());
+            string category; 
+
+            switch (input)
             {
-                // OM man vill skriva ut varukategori
-                var category = item.GetType().Name;
-                //Console.Write($"{category} {item.ProductId} {item.ProductName} - ");
-                Console.Write($"{item.ProductId} {item.ProductName} - ");
-                Console.Write($"{item.ProductCost} kr - ");
-                Console.Write($"{item.ProductInfo} ");
-                Console.WriteLine();
+                case 1:
+                    category = "Soda"; 
+                    ViewProductList(category); 
+                    break;
+                case 2:
+                    category = "Sorbet";
+                    ViewProductList(category);
+                    break;
+                case 3:
+                    category = "Berry";
+                    ViewProductList(category);
+                    break; 
+                default:
+                    break;
             }
         }
 
+
+        public static void ViewProductList(string category)
+        {
+            Console.Clear(); 
+            foreach (var item in products)
+            {
+                var productCategory = item.GetType().Name;
+
+                if (category == productCategory)
+                {
+                    Console.Write($"{item.ProductId} {item.ProductName} - ");
+                    Console.Write($"{item.ProductCost} kr - ");
+                    Console.WriteLine($"{item.ProductInfo} ");
+                }
+            }
+        }
     }
 }
 

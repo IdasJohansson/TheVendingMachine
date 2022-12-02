@@ -14,7 +14,7 @@ namespace TheVendingMachine.Items
             Product product = Product.CreateProduct("Soda");
 
             // Getting a Soda objekt of the type AppleSoda
-            IProduct iproduct = product.GetProduct("AppleSoda");
+            //product.GetProduct("AppleSoda");
 
             // Giving the AppleSoda objekt values
             product.ProductId = 1;
@@ -48,17 +48,10 @@ namespace TheVendingMachine.Items
                 int confirm = Convert.ToInt32(Console.ReadLine());
                 if (confirm == 1)
                 {
-                    // LÄGG TILL ATT SUMMAN DRAS BORT FRÅN INSERTED IN MONEY till MONEY USED
-
-                    //int sumPurchased =+ cost;
-                    //Console.WriteLine("-----> Product cost: {0}", cost);
-                    //var moneyInserted = Wallet.moneyInMachine.Sum();
-                    //int usedMoneyInMachine = moneyInserted - cost;
-
+                    // Tar bort produktkostnaden från pengarna som är isatta i maskinen och flyttar över dem
+                    // till en annan variabel för att registreras som "använda"
                     Wallet.moneyInMachine -= cost;
-
                     Wallet.usedMoneyInMachine += cost; 
-
                   
                     // Vid köpa av produkt ska produkten köpas och användas
                     // Användaren tas tillbaka till menyn vid avslutat köp:
@@ -66,6 +59,7 @@ namespace TheVendingMachine.Items
                 }
                 else
                 {
+                    Console.Clear();
                     // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
                     Menus.StartMenu();
                 }
@@ -80,7 +74,7 @@ namespace TheVendingMachine.Items
 
         public void Use()
         {
-            //Console.Clear();
+            Console.Clear();
             Console.WriteLine("Purchase confirmed");
             Console.WriteLine("Klunk klunk klunk...Oh so Fresh!");
             Helper.ReturnMenuMessage();

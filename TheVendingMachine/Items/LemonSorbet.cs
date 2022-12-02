@@ -13,7 +13,7 @@ namespace TheVendingMachine.Items
             Product product = Product.CreateProduct("Sorbet");
 
             // Getting a Sorbet objekt of the type LemonSorbet
-            IProduct iproduct = product.GetProduct("LemonSorbet");
+            // product.GetProduct("LemonSorbet");
 
             // Giving the LemonSorbet objekt values
             product.ProductId = 3;
@@ -46,12 +46,17 @@ namespace TheVendingMachine.Items
                 int confirm = Convert.ToInt32(Console.ReadLine());
                 if (confirm == 1)
                 {
+                    // Tar bort produktkostnaden från pengarna som är isatta i maskinen och flyttar över dem
+                    // till en annan variabel för att registreras som "använda"
+                    Wallet.moneyInMachine -= cost;
+                    Wallet.usedMoneyInMachine += cost;
                     // Vid köpa av produkt ska produkten köpas och användas
                     // Användaren tas tillbaka till menyn vid avslutat köp:
                     Use();
                 }
                 else
                 {
+                    Console.Clear();
                     // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
                     Menus.StartMenu();
                 }

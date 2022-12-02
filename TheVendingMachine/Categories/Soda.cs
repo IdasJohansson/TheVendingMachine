@@ -32,9 +32,11 @@ namespace TheVendingMachine.Items
 
         public override IProduct GetProduct(string ProductItemType)
         {
+            // Addera toUpper
             if (ProductItemType.Equals("AppleSoda"))
                 return new AppleSoda();
-
+            if (ProductItemType.Equals("BlackcurrantSoda"))
+                return new BlackcurrantSoda();
             else
                 return null;
         }
