@@ -74,6 +74,7 @@ namespace TheVendingMachine.Items
         {
             Console.Clear();
             Console.WriteLine("Purchase confirmed");
+            Helper.RasberrySymbol(); 
             Console.WriteLine("Yum yum yum, tastes like summer");
             Helper.ReturnMenuMessage();
         }

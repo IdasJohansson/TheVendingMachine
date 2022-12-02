@@ -15,11 +15,28 @@ namespace TheVendingMachine.Services
         public static void ReturnMenuMessage()
         {
             Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("------------------------------");
             Console.WriteLine("Press a key to return to Menu");
+            Console.ResetColor();
             Console.ReadKey();
             Console.Clear();
             Menus.StartMenu();
+        }
+
+        public static void HeadLine()
+        {
+            Console.WriteLine(@"
+
+████████╗██╗  ██╗███████╗    ███╗   ███╗ █████╗  ██████╗██╗  ██╗██╗███╗   ██╗███████╗
+╚══██╔══╝██║  ██║██╔════╝    ████╗ ████║██╔══██╗██╔════╝██║  ██║██║████╗  ██║██╔════╝
+   ██║   ███████║█████╗      ██╔████╔██║███████║██║     ███████║██║██╔██╗ ██║█████╗  
+   ██║   ██╔══██║██╔══╝      ██║╚██╔╝██║██╔══██║██║     ██╔══██║██║██║╚██╗██║██╔══╝  
+   ██║   ██║  ██║███████╗    ██║ ╚═╝ ██║██║  ██║╚██████╗██║  ██║██║██║ ╚████║███████╗
+   ╚═╝   ╚═╝  ╚═╝╚══════╝    ╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝╚══════╝
+                                                                                     
+
+");
         }
 
         public static void SodaSymbol()
@@ -62,21 +79,23 @@ namespace TheVendingMachine.Services
        `'""'´");
         }
 
-        public static void BlackcurrantSymbol()
+
+        public static void SorbetSymbol()
         {
-            Console.WriteLine(@"        __
-     __ {_/ 
-     \_}\\ _
-        _\(_)_
-       (_)_)(_)_
-      (_)(_)_)(_)
-       (_)(_))_)
-        (_(_(_)
-         (_)_)
-          (_)");
-
-
+            Console.WriteLine(@"
+       .-''`'''-.
+       /        \
+       \        /
+       /'---'--`\
+      |          |
+      \_.--.__.-./
+        [=-=-=-]
+         |=-=-|
+         |-=-=|
+         '-==-'");
         }
+
+        
     }
 }
 

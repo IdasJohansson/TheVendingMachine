@@ -73,6 +73,7 @@ namespace TheVendingMachine.Items
         {
             Console.Clear();
             Console.WriteLine("Purchase confirmed");
+            Helper.SorbetSymbol();
             Console.WriteLine("Num num num...Cold and refreshing!");
             Helper.ReturnMenuMessage();
         }

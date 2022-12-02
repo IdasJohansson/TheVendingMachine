@@ -10,8 +10,9 @@ namespace TheVendingMachine.Services
 		{
             try
             {
+                Helper.HeadLine();
                 Console.WriteLine("WELCOME TO THIS SUPERAMAZING VENDING MACHINE");
-                Console.WriteLine("In this machine you can buy Sodas, Sorbets or Berries");
+                Console.WriteLine("In this machine you can buy Sodas, Sorbets or Berries :)(:");
                 Console.WriteLine();
 
                 Console.WriteLine("Please select one of below options: ");
@@ -30,18 +31,19 @@ namespace TheVendingMachine.Services
                 {
                     case 1:
                         Console.Clear();
+                        // Visar lista av produktkategorier
                         Product.ViewCategories(); 
-                        //Product.ViewProductList();
                         ViewProductsMenu();
                         break;
                     case 2:
+                        // Skickar vidare till funktionen för att sätta in pengar
                         Wallet.InsertMoney();
+                        // Visar även upp en meny men vad man vill göra härnäst
                         ViewProductsMenu(); 
                         break;
                     case 3:
                         Console.Clear();
-                        // Visar lista av alla produkter: 
-                        //Product.ViewProductList();
+                        // Visar lista av produktkategorier
                         Product.ViewCategories();
                         // Skickar vidare till Villkoren för att genomföra ett köp
                         Wallet.MakePurchase(); 

@@ -1,36 +1,35 @@
 ﻿using System;
-using System.Text.RegularExpressions;
 using TheVendingMachine.Interfaces;
 using TheVendingMachine.MoneyHandler;
 using TheVendingMachine.Services;
 
 namespace TheVendingMachine.Items
 {
-    public class AppleSoda : IProduct
-    {
+	public class Strawberry : IProduct
+	{
         public void AddProductInfo()
         {
-            // Creating a Soda objekt
-            Product product = Product.CreateProduct("Soda");
+            // Creating a Berry objekt
+            Product product = Product.CreateProduct("Berry");
 
-            // Getting a Soda objekt of the type AppleSoda
-            // product.GetProduct("AppleSoda"); 
+            // Getting a Berry objekt of the type Strawberry
+            // product.GetProduct("Strawberry");
 
-            // Giving the AppleSoda objekt values
-            product.ProductId = 1;
-            product.ProductName = "AppleSoda";
-            product.ProductInfo = "330ml";
-            product.ProductCost = 15;
+            // Giving the LemonSorbet objekt values
+            product.ProductId = 6;
+            product.ProductName = "Strawberry";
+            product.ProductInfo = "200g";
+            product.ProductCost = 40;
 
-            // Add produkt Objekt to List of products (in Product class)
+            // Objekt to List of products 
             Product.products.Add(product);
         }
 
         public void Description()
         {
             DateTime date = DateTime.Now;
-            DateTime bestBefore = date.AddYears(1);
-            string info = $"Product information: This softdrink contains carbonated soda, sugar and fruitjuice extracted from Apples harvested in the southern of Sweden. Best-before date: {bestBefore.ToString("dd-MM-yyyy")} ";
+            DateTime bestBefore = date.AddDays(7);
+            string info = $"Theese berries are handpicked in the southern of Sweden. Best-before date: {bestBefore.ToString("dd-MM-yyyy")} ";
             Console.WriteLine();
             Console.WriteLine(info);
         }
@@ -51,8 +50,7 @@ namespace TheVendingMachine.Items
                     // Tar bort produktkostnaden från pengarna som är isatta i maskinen och flyttar över dem
                     // till en annan variabel för att registreras som "använda"
                     Wallet.moneyInMachine -= cost;
-                    Wallet.usedMoneyInMachine += cost; 
-                  
+                    Wallet.usedMoneyInMachine += cost;
                     // Vid köpa av produkt ska produkten köpas och användas
                     // Användaren tas tillbaka till menyn vid avslutat köp:
                     Use();
@@ -68,7 +66,7 @@ namespace TheVendingMachine.Items
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                Helper.ReturnMenuMessage(); 
+                Helper.ReturnMenuMessage();
             }
         }
 
@@ -76,8 +74,8 @@ namespace TheVendingMachine.Items
         {
             Console.Clear();
             Console.WriteLine("Purchase confirmed");
-            Helper.SodaSymbol();
-            Console.WriteLine("Klunk klunk klunk...Oh so Fresh!");
+            Helper.StrawberrySymbol();
+            Console.WriteLine("Yum yum yum, tastes like summer");
             Helper.ReturnMenuMessage();
         }
     }

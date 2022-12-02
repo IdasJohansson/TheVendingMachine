@@ -29,11 +29,13 @@ namespace TheVendingMachine.Items
             set { productCost = value; }
         }
 
-  
+        // Använder ej denna metod just nu ;) 
         public override IProduct GetProduct(string ProductItemType)
         {
             if (ProductItemType.Equals("Raspberry"))
                 return new Raspberry();
+            if (ProductItemType.Equals("Strawberry"))
+                return new Strawberry();
             else
                 return null;
         }
