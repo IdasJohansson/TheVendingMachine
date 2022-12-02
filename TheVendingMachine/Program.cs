@@ -1,8 +1,6 @@
 ﻿using TheVendingMachine.Interfaces;
 using TheVendingMachine.Items;
-using TheVendingMachine.MoneyHandler;
 using TheVendingMachine.Services;
-
 
 
 //// Create the Sodafactory object by passing the factory type as Soda
@@ -24,43 +22,19 @@ using TheVendingMachine.Services;
 //description = iproduct.Description();
 //Console.WriteLine(apple + " " + description);
 
-
 //product.ProductId = 1;
 //product.ProductName = "AppleSoda";
 //product.ProductInfo = "330ml"; 
 //product.ProductCost = 15;
 
-
-
 AppleSoda soda = new AppleSoda();
 soda.AddProductInfo();
+BlackcurrantSoda secondSoda = new BlackcurrantSoda();
+secondSoda.AddProductInfo(); 
 LemonSorbet sorbet = new LemonSorbet();
 sorbet.AddProductInfo();
 Raspberry berry = new Raspberry();
 berry.AddProductInfo();
 
 Menus.StartMenu();
-
-// writes out the added products previously added products in the list
-// Product.ViewProductList();
-
-//soda.Description();
-//soda.Buy();
-//soda.Use();
-
-
-
-//int buyThis = 1;
-
-//var productToBuy = Product.products.Find(x => x.ProductId == buyThis);
-
-//var category = productToBuy.GetType().Name;
-//Console.WriteLine(category);
-
-//Product product = Product.CreateProduct(category);
-//IProduct iproduct = product.GetProduct(productToBuy.ProductName);
-
-//iproduct.Buy();
-//iproduct.Description();
-//iproduct.Use(); 
 

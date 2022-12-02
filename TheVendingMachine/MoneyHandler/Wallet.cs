@@ -10,9 +10,6 @@ namespace TheVendingMachine.MoneyHandler
         public static int fiveSek = 10 * 5;
         public static int tenSek = 10 * 10;
 
-        //public static List<int> moneyInMachine = new List<int>();
-        //public static List<int> moneyInMachineUsed = new List<int>();
-
         public static int moneyInMachine;
         public static int usedMoneyInMachine; 
 
@@ -26,13 +23,14 @@ namespace TheVendingMachine.MoneyHandler
 
         public static bool CheckBalance(int productCost)
         {
-            //var sumInMachine = moneyInMachine.Sum();
-
-            Console.WriteLine("Current money inserted in machine:");
+            Console.WriteLine();
+            Console.Write("Current money inserted in machine:");
             Console.WriteLine(moneyInMachine);
-            Console.WriteLine("Product cost:");
+            Console.Write("Product cost:");
             Console.WriteLine(productCost);
 
+            // Kollar så att pengarna som går att använda i maskinen är större än produktkostnaden
+            // returnerar true om det är tillräckligt, annars false. 
             if (moneyInMachine > productCost)
             {
                 return true; 
@@ -81,7 +79,8 @@ namespace TheVendingMachine.MoneyHandler
             else
             {
                 Helper.ErrorColor("You need to enter more money...Press a key to continue");
-                Console.ReadKey(); 
+                Console.ReadKey();
+                    // Skickar direkt vidare till metoden för att sätta in mer pengar
                 InsertMoney();
             }
             }
@@ -110,8 +109,8 @@ namespace TheVendingMachine.MoneyHandler
                         if (moneyInWallet >= insertedAmount)
                         {
                             moneyInWallet = moneyInWallet - insertedAmount;
-                            //moneyInMachine.Add(insertedAmount);
-                            moneyInMachine += insertedAmount; 
+                            moneyInMachine += insertedAmount;
+                            // Visar upp hur mkt man i plånboken, respektive hur mycket man har att handla för
                             ViewBalance();
                         }
                         // Om man inte har tillräckligt med pengar i plånboken
@@ -136,6 +135,7 @@ namespace TheVendingMachine.MoneyHandler
                     }
                  }
             }
+            // Om användaren skriver en bokstav eller annat tecken istället för en int
             catch (Exception e)
             {
                 Helper.ErrorColor(e.Message);
