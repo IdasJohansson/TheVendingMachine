@@ -34,7 +34,7 @@ namespace TheVendingMachine.Items
             Console.WriteLine(info);
         }
 
-        public void Buy()
+        public void Buy(int cost)
         {
             try
             {

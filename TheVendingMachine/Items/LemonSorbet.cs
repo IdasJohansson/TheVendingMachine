@@ -33,7 +33,7 @@ namespace TheVendingMachine.Items
             Console.WriteLine($"This sorbet is made of sugar and fruitjuice extracted from Lemons harvested in the southern of Sweden. Best-before date: {bestBefore.ToString("dd-MM-yyyy")} "); 
         }
 
-        public void Buy()
+        public void Buy(int cost)
         {
             try
             {

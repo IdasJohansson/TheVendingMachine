@@ -35,7 +35,7 @@ namespace TheVendingMachine.Items
             Console.WriteLine(info);
         }
 
-        public void Buy()
+        public void Buy(int cost)
         {
             try
             {
@@ -48,6 +48,18 @@ namespace TheVendingMachine.Items
                 int confirm = Convert.ToInt32(Console.ReadLine());
                 if (confirm == 1)
                 {
+                    // LÄGG TILL ATT SUMMAN DRAS BORT FRÅN INSERTED IN MONEY till MONEY USED
+
+                    //int sumPurchased =+ cost;
+                    //Console.WriteLine("-----> Product cost: {0}", cost);
+                    //var moneyInserted = Wallet.moneyInMachine.Sum();
+                    //int usedMoneyInMachine = moneyInserted - cost;
+
+                    Wallet.moneyInMachine -= cost;
+
+                    Wallet.usedMoneyInMachine += cost; 
+
+                  
                     // Vid köpa av produkt ska produkten köpas och användas
                     // Användaren tas tillbaka till menyn vid avslutat köp:
                     Use();
@@ -68,7 +80,7 @@ namespace TheVendingMachine.Items
 
         public void Use()
         {
-            Console.Clear();
+            //Console.Clear();
             Console.WriteLine("Purchase confirmed");
             Console.WriteLine("Klunk klunk klunk...Oh so Fresh!");
             Helper.ReturnMenuMessage();

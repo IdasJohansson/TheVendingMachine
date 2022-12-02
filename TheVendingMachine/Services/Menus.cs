@@ -108,7 +108,7 @@ namespace TheVendingMachine.Services
             Console.WriteLine("Thank you for using this SUPER AMAZING VENDING MACHINE");
 
             // Hämtar listan med maskinens pengar summerat
-            var returnMoney = Wallet.moneyInMachine.Sum();
+            var returnMoney = Wallet.moneyInMachine; 
 
             // Om listan(maskinen) inte innehåller några pengar
             if (returnMoney == 0)
