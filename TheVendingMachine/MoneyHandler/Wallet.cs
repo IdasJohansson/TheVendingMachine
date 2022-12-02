@@ -39,7 +39,6 @@ namespace TheVendingMachine.MoneyHandler
             {
                 return false; 
             }
-          
         }
 
         public static void MakePurchase()
