@@ -46,7 +46,8 @@ namespace TheVendingMachine.Items
             else if (ProductCategory.Equals("Sorbet"))
                 return new Sorbet();
             else if (ProductCategory.Equals("Berry"))
-                return new Berry(); 
+                return new Berry();
+            else
                 return null; 
         }
 
@@ -56,7 +57,8 @@ namespace TheVendingMachine.Items
             {
                 // OM man vill skriva ut varukategori
                 var category = item.GetType().Name;
-                Console.Write($"{category} {item.ProductId} {item.ProductName} - ");
+                //Console.Write($"{category} {item.ProductId} {item.ProductName} - ");
+                Console.Write($"{item.ProductId} {item.ProductName} - ");
                 Console.Write($"{item.ProductCost} kr - ");
                 Console.Write($"{item.ProductInfo} ");
                 Console.WriteLine();

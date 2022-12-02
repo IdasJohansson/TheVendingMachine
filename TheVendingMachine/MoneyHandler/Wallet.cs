@@ -10,26 +10,30 @@ namespace TheVendingMachine.MoneyHandler
         public static int fiveSek = 10 * 5;
         public static int tenSek = 10 * 10;
 
-        public static List<int> moneyInMachine = new List<int>();
+        //public static List<int> moneyInMachine = new List<int>();
+        //public static List<int> moneyInMachineUsed = new List<int>();
+
+        public static int moneyInMachine;
+        public static int usedMoneyInMachine; 
 
         public static int moneyInWallet = oneSek + fiveSek + tenSek; 
 
         public static void ViewBalance()
         {
             Console.WriteLine($"Money in wallet: {moneyInWallet}");
-            Console.WriteLine($"Money in machine: {moneyInMachine.Sum()}");
+            Console.WriteLine($"Money in machine: {moneyInMachine}");
         }
 
         public static bool CheckBalance(int productCost)
         {
-            var sumInMachine = moneyInMachine.Sum();
+            //var sumInMachine = moneyInMachine.Sum();
 
             Console.WriteLine("Current money inserted in machine:");
-            Console.WriteLine(sumInMachine);
+            Console.WriteLine(moneyInMachine);
             Console.WriteLine("Product cost:");
             Console.WriteLine(productCost);
 
-            if (sumInMachine > productCost)
+            if (moneyInMachine > productCost)
             {
                 return true; 
             }
@@ -72,7 +76,7 @@ namespace TheVendingMachine.MoneyHandler
                 iproduct.Description();
 
                 // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
-                iproduct.Buy();
+                iproduct.Buy(cost);
             }
             else
             {
@@ -106,7 +110,8 @@ namespace TheVendingMachine.MoneyHandler
                         if (moneyInWallet >= insertedAmount)
                         {
                             moneyInWallet = moneyInWallet - insertedAmount;
-                            moneyInMachine.Add(insertedAmount);
+                            //moneyInMachine.Add(insertedAmount);
+                            moneyInMachine += insertedAmount; 
                             ViewBalance();
                         }
                         // Om man inte har tillräckligt med pengar i plånboken
