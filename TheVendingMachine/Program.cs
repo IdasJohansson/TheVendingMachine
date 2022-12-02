@@ -41,10 +41,9 @@ strawberry.AddProductInfo();
 CherrySoda soda = new CherrySoda();
 soda.CreateSoda();
 
-CherrySoda cherry = new CherrySoda();
-Product.products.Add(cherry);
-
-cherry.GetProduct("CherrySoda"); 
+//CherrySoda cherry = new CherrySoda();
+//Product.products.Add(cherry);
+//cherry.GetProduct("CherrySoda"); 
 
 
 Menus.StartMenu();

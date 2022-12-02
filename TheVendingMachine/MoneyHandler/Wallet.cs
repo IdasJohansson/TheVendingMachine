@@ -80,7 +80,7 @@ namespace TheVendingMachine.MoneyHandler
             {
                 Helper.ErrorColor("You need to enter more money...Press a key to continue");
                 Console.ReadKey();
-                    // Skickar direkt vidare till metoden för att sätta in mer pengar
+                // Skickar direkt vidare till metoden för att sätta in mer pengar
                 InsertMoney();
             }
             }
@@ -103,14 +103,17 @@ namespace TheVendingMachine.MoneyHandler
                 {
                     Console.WriteLine("Feed the machine or press [0] to return to menu.");
                     int insertedAmount = Convert.ToInt32(Console.ReadLine());
+
                     if (insertedAmount == 1 || insertedAmount == 5 || insertedAmount == 10)
                     {
                         // Kollar om plånboken innehåller summan man vill lägga in i maskinen 
                         if (moneyInWallet >= insertedAmount)
                         {
+                            // Det bara går att lägga in 10 mynt av varje sort av eftersom plånboken bara innehåller det
+                            TenCoinLimit(insertedAmount);
                             moneyInWallet = moneyInWallet - insertedAmount;
                             moneyInMachine += insertedAmount;
-                            // Visar upp hur mkt man i plånboken, respektive hur mycket man har att handla för
+                            // Visar upp hur mkt man har i plånboken, respektive hur mycket man har att handla för
                             ViewBalance();
                         }
                         // Om man inte har tillräckligt med pengar i plånboken
@@ -143,6 +146,31 @@ namespace TheVendingMachine.MoneyHandler
             }
 
             }
+
+        // Eftersom plånboken bara innehåller 10 mynt av varje, går det bara att lägga i max 10 tiokronor, max 5 femkronor och max 1 enkronor.
+        public static void TenCoinLimit(int insertedAmount)
+        {
+            switch (insertedAmount)
+            {
+                case 10:
+                    tenSek -= 10;
+                    if (tenSek == 0)
+                    Helper.ErrorColor("You are out of Tens, insert another coin"); 
+                    break;
+                case 5:
+                    fiveSek -= 5;
+                    if (fiveSek == 0)
+                    Helper.ErrorColor("You are out of Fives, insert another coin"); 
+                    break;
+                case 1:
+                    oneSek -= 1;
+                    if (oneSek == 0)
+                    Helper.ErrorColor("You are out of Ones, insert another coin"); 
+                    break; 
+                default:
+                    break;
+            }
+        }
        
     }
 }
