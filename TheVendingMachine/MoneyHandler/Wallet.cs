@@ -111,7 +111,9 @@ namespace TheVendingMachine.MoneyHandler
                         {
                             // Det bara går att lägga in 10 mynt av varje sort av eftersom plånboken bara innehåller det
                             TenCoinLimit(insertedAmount);
-                            moneyInWallet = moneyInWallet - insertedAmount;
+                            // Den isatta pengen dras bort från plånboken
+                            moneyInWallet -= insertedAmount;
+                            // Adderas i maskinen
                             moneyInMachine += insertedAmount;
                             // Visar upp hur mkt man har i plånboken, respektive hur mycket man har att handla för
                             ViewBalance();
