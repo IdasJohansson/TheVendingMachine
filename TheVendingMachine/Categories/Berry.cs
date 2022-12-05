@@ -1,5 +1,6 @@
 ﻿using System;
 using TheVendingMachine.Interfaces;
+using TheVendingMachine.Services;
 
 namespace TheVendingMachine.Items
 {
@@ -29,14 +30,18 @@ namespace TheVendingMachine.Items
             set { productCost = value; }
         }
 
-        // Använder ej denna metod just nu ;) 
+      
         public override IProduct GetProduct(string ProductItemType)
         {
             if (ProductItemType.Equals("Raspberry"))
                 return new Raspberry();
             if (ProductItemType.Equals("Strawberry"))
                 return new Strawberry();
+            if (ProductItemType.Equals("Wildberry"))
+                return new Wildberry();
             else
+                Helper.ErrorColor("Something went wrong.");
+                Helper.ReturnMenuMessage(); 
                 return null;
         }
 

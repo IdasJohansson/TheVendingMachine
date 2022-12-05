@@ -5,31 +5,31 @@ using TheVendingMachine.Services;
 
 namespace TheVendingMachine.Items
 {
-	public class Raspberry : IProduct
+	public class Wildberry : IProduct
 	{
         public void AddProductInfo()
         {
             // Creating a Berry objekt
             Product product = Product.CreateProduct("Berry");
 
-            // Getting a Berry objekt of the type Raspberry
-            // product.GetProduct("Raspberry");
+            // Getting a Berry objekt of the type Wildberry
+            // product.GetProduct("Wildberry");
 
-            // Giving the LemonSorbet objekt values
-            product.ProductId = 7;
-            product.ProductName = "Raspberry";
-            product.ProductInfo = "200g";
+            // Giving the objekt values
+            product.ProductId = 9;
+            product.ProductName = "Wildberry";
+            product.ProductInfo = "Mixed blue-, black- and raspberries,200g";
             product.ProductCost = 40;
 
             // Objekt to List of products 
             Product.products.Add(product);
         }
 
-        public void Description ()
+        public void Description()
         {
             DateTime date = DateTime.Now;
             DateTime bestBefore = date.AddDays(7);
-            string info = $"Theese berries are handpicked in the southern of Sweden. Best-before date: {bestBefore.ToString("dd-MM-yyyy")} ";
+            string info = $"Theese berries are handpicked in the southern of Sweden. A mix of blueberries, blackberries and raspberries. Best-before date: {bestBefore.ToString("dd-MM-yyyy")} ";
             Console.WriteLine();
             Console.WriteLine(info);
         }
@@ -57,7 +57,7 @@ namespace TheVendingMachine.Items
                 }
                 else
                 {
-                    Console.Clear(); 
+                    Console.Clear();
                     // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
                     Menus.StartMenu();
                 }
@@ -74,11 +74,10 @@ namespace TheVendingMachine.Items
         {
             Console.Clear();
             Console.WriteLine("Purchase confirmed");
-            Helper.RasberrySymbol(); 
+            Helper.BlueberrySymbol(); 
             Console.WriteLine("Yum yum yum, tastes like summer!");
             Helper.ReturnMenuMessage();
         }
-
     }
 }
 

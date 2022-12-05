@@ -30,20 +30,34 @@ using TheVendingMachine.Services;
 AppleSoda appleSoda = new AppleSoda();
 appleSoda.AddProductInfo();
 BlackcurrantSoda blackcurrantSoda = new BlackcurrantSoda();
-blackcurrantSoda.AddProductInfo(); 
+blackcurrantSoda.AddProductInfo();
+CherrySoda cherrySoda = new CherrySoda();
+cherrySoda.AddProductInfo(); 
+
+ElderberrySorbet elderberrySorbet = new ElderberrySorbet();
+elderberrySorbet.AddProductInfo();
 LemonSorbet lemonSorbet = new LemonSorbet();
 lemonSorbet.AddProductInfo();
+MangoSorbet mangoSorbet = new MangoSorbet();
+mangoSorbet.AddProductInfo(); 
+
 Raspberry raspberry = new Raspberry();
 raspberry.AddProductInfo();
 Strawberry strawberry = new Strawberry();
 strawberry.AddProductInfo();
+Wildberry wildberry = new Wildberry();
+wildberry.AddProductInfo();
 
-CherrySoda soda = new CherrySoda();
+
+
+
+
+OrangeSoda soda = new OrangeSoda();
 soda.CreateSoda();
 
-//CherrySoda cherry = new CherrySoda();
-//Product.products.Add(cherry);
-//cherry.GetProduct("CherrySoda"); 
+//OrangeSoda orange = new OrangeSoda();
+//Product.products.Add(orange);
+//orange.GetProduct("OrangeSoda"); 
 
 
 Menus.StartMenu();

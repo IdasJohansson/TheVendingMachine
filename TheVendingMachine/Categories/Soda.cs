@@ -1,5 +1,6 @@
 ﻿using System;
 using TheVendingMachine.Interfaces;
+using TheVendingMachine.Services;
 
 namespace TheVendingMachine.Items
 {
@@ -54,7 +55,9 @@ namespace TheVendingMachine.Items
             if (ProductItemType.Equals("CherrySoda"))
                 return new CherrySoda();
             else
-                return null;
+                Helper.ErrorColor("Something went wrong.");
+                Helper.ReturnMenuMessage();
+            return null;
         }
 
     }

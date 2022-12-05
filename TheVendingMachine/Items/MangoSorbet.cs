@@ -5,33 +5,32 @@ using TheVendingMachine.Services;
 
 namespace TheVendingMachine.Items
 {
-	public class Raspberry : IProduct
+	public class MangoSorbet : IProduct
 	{
         public void AddProductInfo()
         {
-            // Creating a Berry objekt
-            Product product = Product.CreateProduct("Berry");
+            // Creating a Sorbet objekt
+            Product product = Product.CreateProduct("Sorbet");
 
-            // Getting a Berry objekt of the type Raspberry
-            // product.GetProduct("Raspberry");
+            // Getting a Sorbet objekt of the type MangoSorbet
+            // product.GetProduct("MangoSorbet");
 
-            // Giving the LemonSorbet objekt values
-            product.ProductId = 7;
-            product.ProductName = "Raspberry";
-            product.ProductInfo = "200g";
-            product.ProductCost = 40;
+            // Giving the MangoSorbet objekt values
+            product.ProductId = 6;
+            product.ProductName = "MangoSorbet";
+            product.ProductInfo = "250ml";
+            product.ProductCost = 25;
 
-            // Objekt to List of products 
+            // Add Objekt to List of products 
             Product.products.Add(product);
         }
 
-        public void Description ()
+        public void Description()
         {
-            DateTime date = DateTime.Now;
-            DateTime bestBefore = date.AddDays(7);
-            string info = $"Theese berries are handpicked in the southern of Sweden. Best-before date: {bestBefore.ToString("dd-MM-yyyy")} ";
             Console.WriteLine();
-            Console.WriteLine(info);
+            DateTime date = DateTime.Now;
+            DateTime bestBefore = date.AddMonths(1);
+            Console.WriteLine($"This sorbet is made of sugar and fruitjuice extracted from Mangos harvested in the southern of Europe. Best-before date: {bestBefore.ToString("dd-MM-yyyy")} ");
         }
 
         public void Buy(int cost)
@@ -57,7 +56,7 @@ namespace TheVendingMachine.Items
                 }
                 else
                 {
-                    Console.Clear(); 
+                    Console.Clear();
                     // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
                     Menus.StartMenu();
                 }
@@ -74,11 +73,10 @@ namespace TheVendingMachine.Items
         {
             Console.Clear();
             Console.WriteLine("Purchase confirmed");
-            Helper.RasberrySymbol(); 
-            Console.WriteLine("Yum yum yum, tastes like summer!");
+            Helper.SorbetSymbol();
+            Console.WriteLine("Num num num...Cold and refreshing!");
             Helper.ReturnMenuMessage();
         }
-
     }
 }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using TheVendingMachine.Interfaces;
+using TheVendingMachine.Services;
 
 namespace TheVendingMachine.Items
 {
@@ -33,8 +34,14 @@ namespace TheVendingMachine.Items
         {
             if (ProductItemType.Equals("LemonSorbet"))
                 return new LemonSorbet();
+            else if (ProductItemType.Equals("ElderberrySorbet"))
+                return new ElderberrySorbet();
+            else if (ProductItemType.Equals("MangoSorbet"))
+                return new MangoSorbet(); 
             else
-                return null;
+                Helper.ErrorColor("Something went wrong.");
+                Helper.ReturnMenuMessage();
+            return null;
         }
     }
 }
