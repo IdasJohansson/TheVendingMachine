@@ -16,7 +16,7 @@ namespace TheVendingMachine.Items
             // product.GetProduct("Strawberry");
 
             // Giving the LemonSorbet objekt values
-            product.ProductId = 6;
+            product.ProductId = 8;
             product.ProductName = "Strawberry";
             product.ProductInfo = "200g";
             product.ProductCost = 40;
@@ -41,7 +41,7 @@ namespace TheVendingMachine.Items
                 // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
                 Console.WriteLine();
                 Console.WriteLine("Are you sure you want to buy this product? ");
-                Console.WriteLine("Press 1 to confirm and 0 to return to menu.");
+                Console.WriteLine("Press [1] to confirm or [0] to return to menu.");
                 Console.WriteLine();
 
                 int confirm = Convert.ToInt32(Console.ReadLine());
@@ -75,7 +75,7 @@ namespace TheVendingMachine.Items
             Console.Clear();
             Console.WriteLine("Purchase confirmed");
             Helper.StrawberrySymbol();
-            Console.WriteLine("Yum yum yum, tastes like summer");
+            Console.WriteLine("Yum yum yum, tastes like summer!");
             Helper.ReturnMenuMessage();
         }
     }

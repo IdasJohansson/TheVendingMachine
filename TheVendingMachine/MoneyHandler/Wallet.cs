@@ -47,7 +47,15 @@ namespace TheVendingMachine.MoneyHandler
             {
             Console.WriteLine();
             Console.WriteLine("Enter number of the product you want to Buy: ");
+            Console.WriteLine("(Press [0] to return)");
             int buyThis = Convert.ToInt32(Console.ReadLine());
+
+                // Backa tillbaka till produktmenyn om man ångrar sig
+                if (buyThis == 0)
+                {
+                    Console.Clear(); 
+                    Menus.ViewProductsMenu(); 
+                }
 
             // Går in i listan med produkter och hämtar objektet med id't som användaren har angett?
             var productToBuy = Product.products.Find(x => x.ProductId == buyThis);
@@ -58,7 +66,7 @@ namespace TheVendingMachine.MoneyHandler
             // Instansierar ett objekt av produktkategorin
             Product product = Product.CreateProduct(category);
 
-            // skapar ett objekt med namnet på den hämtade produkten.....ish 
+            // skapar ett objekt med namnet på den hämtade produkten..... Getproduct metoden kommer från category klassen som har ärvt den från product-klassen. 
             IProduct iproduct = product.GetProduct(productToBuy.ProductName);
 
             // Vid köp av produkt så skall en kontroll ske; att användaren har

@@ -16,7 +16,7 @@ namespace TheVendingMachine.Items
             // product.GetProduct("LemonSorbet");
 
             // Giving the LemonSorbet objekt values
-            product.ProductId = 3;
+            product.ProductId = 5;
             product.ProductName = "LemonSorbet";
             product.ProductInfo = "250ml";
             product.ProductCost = 25;
@@ -40,7 +40,7 @@ namespace TheVendingMachine.Items
                 // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
                 Console.WriteLine();
                 Console.WriteLine("Are you sure you want to buy this product? ");
-                Console.WriteLine("Press 1 to confirm and 0 to return to menu.");
+                Console.WriteLine("Press [1] to confirm or [0] to return to menu.");
                 Console.WriteLine();
 
                 int confirm = Convert.ToInt32(Console.ReadLine());

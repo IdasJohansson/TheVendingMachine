@@ -79,6 +79,22 @@ namespace TheVendingMachine.Services
        `'""'´");
         }
 
+        public static void BlueberrySymbol()
+        {
+            Console.WriteLine(@"
+       .\()/,
+      ()_()_)
+     (.(_)()_)
+      (_(_).)'
+       `'()'´
+
+      .--./ 
+     /#   \  \.--.
+     \    /  /#   \
+      '--'   \    /
+              '--'");
+        }
+
 
         public static void SorbetSymbol()
         {

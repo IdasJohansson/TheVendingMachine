@@ -1,49 +1,87 @@
 ﻿using System;
 using TheVendingMachine.Interfaces;
+using TheVendingMachine.MoneyHandler;
+using TheVendingMachine.Services;
 
 namespace TheVendingMachine.Items
 {
 	public class CherrySoda : IProduct
     {
-		// Try to use the constructor here
+        public void AddProductInfo()
+        {
+            // Creating a Soda objekt
+            Product product = Product.CreateProduct("Soda");
 
-		//Product product = Product.CreateProduct("Soda");
+            // Getting a Soda objekt of the type CherrySoda
+            // product.GetProduct("CherrySoda"); 
 
-		//public override int ProductId { get; set; }
-		//public override string ProductName { get; set; }
-		//public override string ProductInfo { get; set; }
-		//public override int ProductCost { get; set; }
+            // Giving the AppleSoda objekt values
+            product.ProductId = 3;
+            product.ProductName = "CherrySoda";
+            product.ProductInfo = "330ml";
+            product.ProductCost = 15;
 
-		//Soda soda = new Soda(10,"Cherry", "3liter", 20);
-
-		public CherrySoda()
-		{ }
-
-   //     public CherrySoda(int productId, string productName, string productInfo, int productCost)
-   //     {
-			//ProductId = 20;
-			//ProductName = "CherrySoda";
-			//ProductInfo = "330ml";
-			//ProductCost = 15; 
-   //     }
-
-
-
-        public Soda CreateSoda()
-		{
-			return new Soda(10, "ApelsinSoda", "3liter", 20); 
-		}
+            // Add produkt Objekt to List of products (in Product class)
+            Product.products.Add(product);
+        }
 
         public void Description()
-		{ }
+        {
+            DateTime date = DateTime.Now;
+            DateTime bestBefore = date.AddYears(1);
+            string info = $"Product information: This softdrink contains carbonated soda, sugar and fruitjuice extracted from Cherrys harvested in the southern of Sweden. Best-before date: {bestBefore.ToString("dd-MM-yyyy")} ";
+            Console.WriteLine();
+            Console.WriteLine(info);
+        }
 
-		public void Buy(int productCost)
-		{ }
+        public void Buy(int cost)
+        {
+            try
+            {
+                // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
+                Console.WriteLine();
+                Console.WriteLine("Are you sure you want to buy this product? ");
+                Console.WriteLine("Press [1] to confirm or [0] to return to menu.");
+                Console.WriteLine();
 
-		public void Use()
-		{ }
+                int confirm = Convert.ToInt32(Console.ReadLine());
+                if (confirm == 1)
+                {
+                    // Tar bort produktkostnaden från pengarna som är isatta i maskinen och flyttar över dem
+                    // till en annan variabel för att registreras som "använda"
+                    Wallet.moneyInMachine -= cost;
+                    Wallet.usedMoneyInMachine += cost;
 
-   
+                    // Vid köpa av produkt ska produkten köpas och användas
+                    // Användaren tas tillbaka till menyn vid avslutat köp:
+                    Use();
+                }
+                else
+                {
+                    Console.Clear();
+                    // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
+                    Menus.StartMenu();
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Helper.ReturnMenuMessage();
+            }
+        }
+
+        public void Use()
+        {
+            Console.Clear();
+            Console.WriteLine("Purchase confirmed");
+            Helper.SodaSymbol();
+            Console.WriteLine("Klunk klunk klunk...Oh so Fresh!");
+            Helper.ReturnMenuMessage();
+        }
+
+
+
     }
 }
 

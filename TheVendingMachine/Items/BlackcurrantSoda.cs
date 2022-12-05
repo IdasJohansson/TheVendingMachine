@@ -41,7 +41,7 @@ namespace TheVendingMachine.Items
                 // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
                 Console.WriteLine();
                 Console.WriteLine("Are you sure you want to buy this product? ");
-                Console.WriteLine("Press 1 to confirm and 0 to return to menu.");
+                Console.WriteLine("Press [1] to confirm or [0] to return to menu.");
                 Console.WriteLine();
 
                 int confirm = Convert.ToInt32(Console.ReadLine());

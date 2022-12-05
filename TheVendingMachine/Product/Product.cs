@@ -1,5 +1,6 @@
 ﻿using System;
 using TheVendingMachine.Interfaces;
+using TheVendingMachine.Services;
 
 namespace TheVendingMachine.Items
 {
@@ -53,11 +54,14 @@ namespace TheVendingMachine.Items
 
         public static void ViewCategories()
         {
+            try
+            {
             Console.WriteLine("Select category:");
 
             Console.WriteLine("[1] SODA");
             Console.WriteLine("[2] SORBET");
             Console.WriteLine("[3] BERRY");
+            Console.WriteLine("(Press [0] to return)");
             int input = Convert.ToInt32(Console.ReadLine());
             string category; 
 
@@ -74,9 +78,21 @@ namespace TheVendingMachine.Items
                 case 3:
                     category = "Berry";
                     ViewProductList(category);
+                    break;
+                case 0:
+                    Console.Clear();
+                    Menus.ViewProductsMenu();
                     break; 
                 default:
+                    Helper.ErrorColor("Wrong input, please try again!");
+                    Helper.ReturnMenuMessage(); 
                     break;
+            }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Helper.ReturnMenuMessage();
             }
         }
 
