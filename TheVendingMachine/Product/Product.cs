@@ -35,11 +35,12 @@ namespace TheVendingMachine.Items
             set;
         }
 
-        // List off all products 
+        // Lista med alla produkter
         public static List<Product> products = new List<Product>();
 
         public abstract IProduct GetProduct(string Product);
-     
+
+        // Metod som returnerar en ny instans av en produktkategori
         public static Product CreateProduct(string ProductCategory)
         {
             if (ProductCategory.Equals("Soda"))
@@ -49,69 +50,11 @@ namespace TheVendingMachine.Items
             else if (ProductCategory.Equals("Berry"))
                 return new Berry();
             else
-                return null; 
-        }
-
-        public static void ViewCategories()
-        {
-            try
-            {
-            Console.WriteLine("Select category:");
-
-            Console.WriteLine("[1] SODA");
-            Console.WriteLine("[2] SORBET");
-            Console.WriteLine("[3] BERRY");
-            Console.WriteLine("(Press [0] to return)");
-            int input = Convert.ToInt32(Console.ReadLine());
-            string category; 
-
-            switch (input)
-            {
-                case 1:
-                    category = "Soda"; 
-                    ViewProductList(category); 
-                    break;
-                case 2:
-                    category = "Sorbet";
-                    ViewProductList(category);
-                    break;
-                case 3:
-                    category = "Berry";
-                    ViewProductList(category);
-                    break;
-                case 0:
-                    Console.Clear();
-                    Menus.ViewProductsMenu();
-                    break; 
-                default:
-                    Helper.ErrorColor("Wrong input, please try again!");
-                    Helper.ReturnMenuMessage(); 
-                    break;
-            }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
+                Helper.ErrorColor("Something went wrong.");
                 Helper.ReturnMenuMessage();
-            }
+            return null; 
         }
 
-
-        public static void ViewProductList(string category)
-        {
-            Console.Clear(); 
-            foreach (var item in products)
-            {
-                var productCategory = item.GetType().Name;
-
-                if (category == productCategory)
-                {
-                    Console.Write($"{item.ProductId} {item.ProductName} - ");
-                    Console.Write($"{item.ProductCost} kr - ");
-                    Console.WriteLine($"{item.ProductInfo} ");
-                }
-            }
-        }
     }
 }
 

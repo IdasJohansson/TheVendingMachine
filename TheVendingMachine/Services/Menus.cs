@@ -1,4 +1,5 @@
 ﻿
+using TheVendingMachine.Interfaces;
 using TheVendingMachine.Items;
 using TheVendingMachine.MoneyHandler;
 
@@ -32,7 +33,7 @@ namespace TheVendingMachine.Services
                     case 1:
                         Console.Clear();
                         // Visar lista av produktkategorier
-                        Product.ViewCategories(); 
+                        ViewCategories(); 
                         ViewProductsMenu();
                         break;
                     case 2:
@@ -44,7 +45,7 @@ namespace TheVendingMachine.Services
                     case 3:
                         Console.Clear();
                         // Visar lista av produktkategorier
-                        Product.ViewCategories();
+                        ViewCategories();
                         // Skickar vidare till Villkoren för att genomföra ett köp
                         Wallet.MakePurchase(); 
                         break;
@@ -61,6 +62,70 @@ namespace TheVendingMachine.Services
             {
                 Helper.ErrorColor(e.Message);
                 Helper.ReturnMenuMessage(); 
+            }
+        }
+
+
+        // En vy som visar upp alla kategorier 
+        public static void ViewCategories()
+        {
+            try
+            {
+                Console.WriteLine("Select category:");
+
+                Console.WriteLine("[1] SODA");
+                Console.WriteLine("[2] SORBET");
+                Console.WriteLine("[3] BERRY");
+                Console.WriteLine("(Press [0] to return)");
+                int input = Convert.ToInt32(Console.ReadLine());
+                string category;
+
+                switch (input)
+                {
+                    case 1:
+                        category = "Soda";
+                        ViewProductList(category);
+                        break;
+                    case 2:
+                        category = "Sorbet";
+                        ViewProductList(category);
+                        break;
+                    case 3:
+                        category = "Berry";
+                        ViewProductList(category);
+                        break;
+                    case 0:
+                        Console.Clear();
+                        Menus.ViewProductsMenu();
+                        break;
+                    default:
+                        Helper.ErrorColor("Wrong input, please try again!");
+                        Helper.ReturnMenuMessage();
+                        break;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Helper.ReturnMenuMessage();
+            }
+        }
+
+
+        public static void ViewProductList(string category)
+        {
+            Console.Clear();
+            var products = Product.products; 
+            foreach (var item in products)
+            {
+                var productCategory = item.GetType().Name;
+
+                if (category == productCategory)
+                {
+                    Console.Write($"{item.ProductId} {item.ProductName} - ");
+                    Console.Write($"{item.ProductCost} kr - ");
+                    Console.WriteLine($"{item.ProductInfo} ");
+                }
             }
         }
 
@@ -103,6 +168,7 @@ namespace TheVendingMachine.Services
             catch (Exception e)
             {
                 Helper.ErrorColor(e.Message);
+                Helper.ReturnMenuMessage();
             }
         }
 
@@ -111,10 +177,10 @@ namespace TheVendingMachine.Services
             Console.Clear(); 
             Console.WriteLine("Thank you for using this SUPER AMAZING VENDING MACHINE");
 
-            // Hämtar listan med maskinens pengar summerat
+            // Hämtar maskinens pengar summerat
             var returnMoney = Wallet.moneyInMachine; 
 
-            // Om listan(maskinen) inte innehåller några pengar
+            // Om lmaskinen inte innehåller några pengar
             if (returnMoney == 0)
             {
                 Console.WriteLine("Machine contains no money.");

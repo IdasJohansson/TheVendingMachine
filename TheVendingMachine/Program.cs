@@ -59,6 +59,6 @@ soda.CreateSoda();
 //Product.products.Add(orange);
 //orange.GetProduct("OrangeSoda"); 
 
-
+// Tar fram startMenyn
 Menus.StartMenu();
 

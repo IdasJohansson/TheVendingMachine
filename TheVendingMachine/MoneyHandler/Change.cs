@@ -13,7 +13,7 @@ namespace TheVendingMachine.MoneyHandler
         // Konstruktorn tar in summan av pengarna som är isatta i maskinen men inte använda 
 		public Change(int moneyToReturn)
 		{
-            // Modulus räknar ut hur mpna av respektive valör det går att få ut av summan som är kvar i maskinen
+            // Modulus räknar ut hur mpnga av respektive valör det går att få ut av summan som är kvar i maskinen
 			Hundred = (moneyToReturn / 100);
 			moneyToReturn %= 100;
             Fifty = (moneyToReturn / 50);
@@ -31,7 +31,7 @@ namespace TheVendingMachine.MoneyHandler
 		{
             Console.WriteLine();
             Console.WriteLine("If you inserted money that you didn't use, they will be returned below: ");
-            // Skapar ett change objekt, skickar med retur summan och delar upp den i de olika valörerna
+            // Skapar ett change objekt, skickar med retur summan och skriver ut den i de olika valörerna
             Change change = new Change(returnSum);
             Console.WriteLine($"Hundreds: {change.Hundred} (* 100 kr)");
             Console.WriteLine($"Fiftys: {change.Fifty} (* 50 kr)");
