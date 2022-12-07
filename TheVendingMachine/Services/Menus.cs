@@ -7,6 +7,7 @@ namespace TheVendingMachine.Services
 {
 	public class Menus
 	{
+        // Denna meny visas upp direkt när programmet startas
 		public static void StartMenu()
 		{
             try
@@ -50,14 +51,17 @@ namespace TheVendingMachine.Services
                         Wallet.MakePurchase(); 
                         break;
                     case 0:
+                        // Metod som anvluta programmet
                         EndMessage(); 
                         break;
                     default:
+                        // Om man skriver fel siffra som input kommer man hit. 
                         Helper.ErrorColor("Invalid input!");
                         Helper.ReturnMenuMessage();
                         break; 
                 }
             }
+            // Om användaren skriver något annat än siffror skickas man hit
             catch (Exception e)
             {
                 Helper.ErrorColor(e.Message);
@@ -66,7 +70,7 @@ namespace TheVendingMachine.Services
         }
 
 
-        // En vy som visar upp alla kategorier 
+        // En vy som visar upp alla kategorier och skickar användaren vidare till en lista med produkter inom vald produktkategori
         public static void ViewCategories()
         {
             try
@@ -111,7 +115,7 @@ namespace TheVendingMachine.Services
             }
         }
 
-
+        // Visar upp en lista med produkter inom vald produktkategori
         public static void ViewProductList(string category)
         {
             Console.Clear();
@@ -176,6 +180,12 @@ namespace TheVendingMachine.Services
         {
             Console.Clear(); 
             Console.WriteLine("Thank you for using this SUPER AMAZING VENDING MACHINE");
+            Console.WriteLine(@"
+ ____ ____ ____ 
+||B |||Y |||E ||
+||__|||__|||__||
+|/__\|/__\|/__\|
+");
 
             // Hämtar maskinens pengar summerat
             var returnMoney = Wallet.moneyInMachine; 

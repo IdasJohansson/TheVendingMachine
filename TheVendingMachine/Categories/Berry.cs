@@ -40,7 +40,7 @@ namespace TheVendingMachine.Items
             if (ProductItemType.Equals("Wildberry"))
                 return new Wildberry();
             else
-                Helper.ErrorColor("Something went wrong.");
+                Helper.ErrorColor("Something went wrong with Berries.");
                 Helper.ReturnMenuMessage(); 
                 return null;
         }

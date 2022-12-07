@@ -53,7 +53,7 @@ namespace TheVendingMachine.MoneyHandler
             try
             {
             Console.WriteLine();
-            Console.WriteLine("Enter number of the product you want to Buy: ");
+            Console.WriteLine("Enter number of the product you want to Buy to see product description and continue:  ");
             Console.WriteLine("(Press [0] to return)");
             int buyThis = Convert.ToInt32(Console.ReadLine());
 
@@ -164,7 +164,7 @@ namespace TheVendingMachine.MoneyHandler
 
             }
 
-        // Eftersom plånboken bara innehåller 10 mynt av varje, går det bara att lägga i max 10 tiokronor, max 5 femkronor och max 1 enkronor. TenCoinLimit håller koll på det. 
+        // Eftersom plånboken bara innehåller 10 mynt av varje, går det bara att lägga i max 10 tiokronor, max 10 femkronor och max 10 enkronor. TenCoinLimit håller koll på det. 
         public static void TenCoinLimit(int insertedAmount)
         {
             switch (insertedAmount)
@@ -185,7 +185,7 @@ namespace TheVendingMachine.MoneyHandler
                     Helper.ErrorColor("You are out of Ones, insert another coin"); 
                     break; 
                 default:
-                    Helper.ErrorColor("Something went wrong!");
+                    Helper.ErrorColor("Something went wrong with TenCoinLimit");
                     Helper.ReturnMenuMessage();
                     break;
             }

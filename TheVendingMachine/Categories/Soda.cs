@@ -44,18 +44,19 @@ namespace TheVendingMachine.Items
             products.Add(this); 
         }
 
-        // Använder ej denna metod atm 
+      
         public override IProduct GetProduct(string ProductItemType)
         {
-            // Addera toUpper för att förbättra
             if (ProductItemType.Equals("AppleSoda"))
                 return new AppleSoda();
             if (ProductItemType.Equals("BlackcurrantSoda"))
                 return new BlackcurrantSoda();
             if (ProductItemType.Equals("CherrySoda"))
                 return new CherrySoda();
+            if (ProductItemType.Equals("OrangeSoda"))
+                return new OrangeSoda(15, "ApelsinSoda", "3liter", 20); 
             else
-                Helper.ErrorColor("Something went wrong.");
+                Helper.ErrorColor("Something went wrong with Sodas.");
                 Helper.ReturnMenuMessage();
             return null;
         }

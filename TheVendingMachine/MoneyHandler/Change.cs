@@ -31,7 +31,7 @@ namespace TheVendingMachine.MoneyHandler
 		{
             Console.WriteLine();
             Console.WriteLine("If you inserted money that you didn't use, they will be returned below: ");
-            // Skapar ett change objekt, skickar med retur summan och skriver ut den i de olika valörerna
+            // Skapar ett change objekt, skickar med retursumman och skriver ut den i de olika valörerna
             Change change = new Change(returnSum);
             Console.WriteLine($"Hundreds: {change.Hundred} (* 100 kr)");
             Console.WriteLine($"Fiftys: {change.Fifty} (* 50 kr)");

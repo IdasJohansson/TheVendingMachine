@@ -55,10 +55,20 @@ wildberry.AddProductInfo();
 OrangeSoda soda = new OrangeSoda();
 soda.CreateSoda();
 
+soda.GetProduct("OrangeSoda");
+
+
 //OrangeSoda orange = new OrangeSoda();
+//Soda orange = new Soda(); 
+//orange.GetProduct("OrangeSoda");
 //Product.products.Add(orange);
-//orange.GetProduct("OrangeSoda"); 
+//Console.WriteLine(orange.ProductName);
+
+//OrangeSoda orangeSoda = new OrangeSoda();
+//orangeSoda.GetProduct("OrangeSoda");
+//Console.WriteLine(orangeSoda.ProductName);
 
 // Tar fram startMenyn
 Menus.StartMenu();
+
 
