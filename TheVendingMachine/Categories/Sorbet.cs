@@ -39,7 +39,7 @@ namespace TheVendingMachine.Items
             else if (ProductItemType.Equals("MangoSorbet"))
                 return new MangoSorbet(); 
             else
-                Helper.ErrorColor("Something went wrong.");
+                Helper.ErrorColor("Something went wrong with sorbets.");
                 Helper.ReturnMenuMessage();
             return null;
         }

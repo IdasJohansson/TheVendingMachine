@@ -6,21 +6,27 @@ namespace TheVendingMachine.MoneyHandler
 {
     public class Wallet
     {
+        // När programet startas finns det 10 mynt av enkronor, femkronor och tiokornor vardera i plånboken
         public static int oneSek = 10 * 1;
         public static int fiveSek = 10 * 5;
         public static int tenSek = 10 * 10;
 
+        // moneyInMachine får ett värde när pengar matas in maskinen
         public static int moneyInMachine;
+        // usedMoneyINmachine får ett värde när man handlar för pengar man matat in i maskinen 
         public static int usedMoneyInMachine; 
 
+        // Summering av pengarna i plånboken (160 kr)
         public static int moneyInWallet = oneSek + fiveSek + tenSek; 
 
+        // Visar upp saldot i plånboken respektive pengar man har att handla för i maskinen
         public static void ViewBalance()
         {
             Console.WriteLine($"Money in wallet: {moneyInWallet}");
             Console.WriteLine($"Money in machine: {moneyInMachine}");
         }
 
+        // Denna metod kollar så att det finns tillräckligt med inmatade pengar i maskinen för att kunna handla
         public static bool CheckBalance(int productCost)
         {
             Console.WriteLine();
@@ -41,12 +47,13 @@ namespace TheVendingMachine.MoneyHandler
             }
         }
 
+        // Nedan metod innehåller de steg som behöver genomgås för att kunna genomföra ett köp
         public static void MakePurchase()
         {
             try
             {
             Console.WriteLine();
-            Console.WriteLine("Enter number of the product you want to Buy: ");
+            Console.WriteLine("Enter number of the product you want to Buy to see product description and continue:  ");
             Console.WriteLine("(Press [0] to return)");
             int buyThis = Convert.ToInt32(Console.ReadLine());
 
@@ -98,6 +105,7 @@ namespace TheVendingMachine.MoneyHandler
             }
         }
 
+        // Metod för att mata i pengar i maskinen
         public static void InsertMoney()
         {
             try
@@ -156,7 +164,7 @@ namespace TheVendingMachine.MoneyHandler
 
             }
 
-        // Eftersom plånboken bara innehåller 10 mynt av varje, går det bara att lägga i max 10 tiokronor, max 5 femkronor och max 1 enkronor.
+        // Eftersom plånboken bara innehåller 10 mynt av varje, går det bara att lägga i max 10 tiokronor, max 10 femkronor och max 10 enkronor. TenCoinLimit håller koll på det. 
         public static void TenCoinLimit(int insertedAmount)
         {
             switch (insertedAmount)
@@ -177,6 +185,8 @@ namespace TheVendingMachine.MoneyHandler
                     Helper.ErrorColor("You are out of Ones, insert another coin"); 
                     break; 
                 default:
+                    Helper.ErrorColor("Something went wrong with TenCoinLimit");
+                    Helper.ReturnMenuMessage();
                     break;
             }
         }

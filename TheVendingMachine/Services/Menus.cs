@@ -1,4 +1,5 @@
 ﻿
+using TheVendingMachine.Interfaces;
 using TheVendingMachine.Items;
 using TheVendingMachine.MoneyHandler;
 
@@ -6,6 +7,7 @@ namespace TheVendingMachine.Services
 {
 	public class Menus
 	{
+        // Denna meny visas upp direkt när programmet startas
 		public static void StartMenu()
 		{
             try
@@ -32,7 +34,7 @@ namespace TheVendingMachine.Services
                     case 1:
                         Console.Clear();
                         // Visar lista av produktkategorier
-                        Product.ViewCategories(); 
+                        ViewCategories(); 
                         ViewProductsMenu();
                         break;
                     case 2:
@@ -44,23 +46,90 @@ namespace TheVendingMachine.Services
                     case 3:
                         Console.Clear();
                         // Visar lista av produktkategorier
-                        Product.ViewCategories();
+                        ViewCategories();
                         // Skickar vidare till Villkoren för att genomföra ett köp
                         Wallet.MakePurchase(); 
                         break;
                     case 0:
+                        // Metod som anvluta programmet
                         EndMessage(); 
                         break;
                     default:
+                        // Om man skriver fel siffra som input kommer man hit. 
                         Helper.ErrorColor("Invalid input!");
                         Helper.ReturnMenuMessage();
                         break; 
                 }
             }
+            // Om användaren skriver något annat än siffror skickas man hit
             catch (Exception e)
             {
                 Helper.ErrorColor(e.Message);
                 Helper.ReturnMenuMessage(); 
+            }
+        }
+
+
+        // En vy som visar upp alla kategorier och skickar användaren vidare till en lista med produkter inom vald produktkategori
+        public static void ViewCategories()
+        {
+            try
+            {
+                Console.WriteLine("Select category:");
+
+                Console.WriteLine("[1] SODA");
+                Console.WriteLine("[2] SORBET");
+                Console.WriteLine("[3] BERRY");
+                Console.WriteLine("(Press [0] to return)");
+                int input = Convert.ToInt32(Console.ReadLine());
+                string category;
+
+                switch (input)
+                {
+                    case 1:
+                        category = "Soda";
+                        ViewProductList(category);
+                        break;
+                    case 2:
+                        category = "Sorbet";
+                        ViewProductList(category);
+                        break;
+                    case 3:
+                        category = "Berry";
+                        ViewProductList(category);
+                        break;
+                    case 0:
+                        Console.Clear();
+                        Menus.ViewProductsMenu();
+                        break;
+                    default:
+                        Helper.ErrorColor("Wrong input, please try again!");
+                        Helper.ReturnMenuMessage();
+                        break;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Helper.ReturnMenuMessage();
+            }
+        }
+
+        // Visar upp en lista med produkter inom vald produktkategori
+        public static void ViewProductList(string category)
+        {
+            Console.Clear();
+            var products = Product.products; 
+            foreach (var item in products)
+            {
+                var productCategory = item.GetType().Name;
+
+                if (category == productCategory)
+                {
+                    Console.Write($"{item.ProductId} {item.ProductName} - ");
+                    Console.Write($"{item.ProductCost} kr - ");
+                    Console.WriteLine($"{item.ProductInfo} ");
+                }
             }
         }
 
@@ -103,6 +172,7 @@ namespace TheVendingMachine.Services
             catch (Exception e)
             {
                 Helper.ErrorColor(e.Message);
+                Helper.ReturnMenuMessage();
             }
         }
 
@@ -110,11 +180,17 @@ namespace TheVendingMachine.Services
         {
             Console.Clear(); 
             Console.WriteLine("Thank you for using this SUPER AMAZING VENDING MACHINE");
+            Console.WriteLine(@"
+ ____ ____ ____ 
+||B |||Y |||E ||
+||__|||__|||__||
+|/__\|/__\|/__\|
+");
 
-            // Hämtar listan med maskinens pengar summerat
+            // Hämtar maskinens pengar summerat
             var returnMoney = Wallet.moneyInMachine; 
 
-            // Om listan(maskinen) inte innehåller några pengar
+            // Om lmaskinen inte innehåller några pengar
             if (returnMoney == 0)
             {
                 Console.WriteLine("Machine contains no money.");
