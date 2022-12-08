@@ -30,22 +30,6 @@ namespace TheVendingMachine.Items
             set { productCost = value; }
         }
 
-      
-        public override IProduct GetProduct(string ProductItemType)
-        {
-            if (ProductItemType.Equals("Raspberry"))
-                return new Raspberry();
-            if (ProductItemType.Equals("Strawberry"))
-                return new Strawberry();
-            if (ProductItemType.Equals("Wildberry"))
-                return new Wildberry();
-            else
-                Helper.ErrorColor("Something went wrong with Berries.");
-                Helper.ReturnMenuMessage(); 
-                return null;
-        }
-
-
     }
 }
 

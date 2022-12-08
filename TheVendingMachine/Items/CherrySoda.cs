@@ -5,15 +5,36 @@ using TheVendingMachine.Services;
 
 namespace TheVendingMachine.Items
 {
-	public class CherrySoda : IProduct
+	public class CherrySoda : Product, IProduct
     {
-        public void AddProductInfo()
+        public override int ProductId
+        {
+            get { return productId; }
+            set { productId = value; }
+        }
+
+        public override string ProductName
+        {
+            get { return productName; }
+            set { productName = value; }
+        }
+
+        public override string ProductInfo
+        {
+            get { return productInfo; }
+            set { productInfo = value; }
+        }
+
+        public override int ProductCost
+        {
+            get { return productCost; }
+            set { productCost = value; }
+        }
+
+        public CherrySoda()
         {
             // Creating a Soda objekt
             Product product = Product.CreateProduct("Soda");
-
-            // Getting a Soda objekt of the type CherrySoda
-            // product.GetProduct("CherrySoda"); 
 
             // Giving the AppleSoda objekt values
             product.ProductId = 3;
@@ -22,7 +43,10 @@ namespace TheVendingMachine.Items
             product.ProductCost = 15;
 
             // Add produkt Objekt to List of products (in Product class)
-            Product.products.Add(product);
+            if (!Product.products.Contains(product))
+            {
+                Product.products.Add(product);
+            }
         }
 
         public void Description()

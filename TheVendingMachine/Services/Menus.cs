@@ -45,10 +45,21 @@ namespace TheVendingMachine.Services
                         break;
                     case 3:
                         Console.Clear();
-                        // Visar lista av produktkategorier
-                        ViewCategories();
-                        // Skickar vidare till Villkoren för att genomföra ett köp
-                        Wallet.MakePurchase(); 
+                            // Man måste ha lagt i minst 15 kr för att kunna komma till alternativet att genomföra ett köp
+                            if (Wallet.moneyInMachine < 15)
+                            {
+                                Console.WriteLine("Please feed the machine to make a purchase");
+                                Console.WriteLine("Press a key to continue");
+                                Console.ReadKey(); 
+                                Wallet.InsertMoney();
+                            }
+                            else
+                            {
+                                // Visar lista av produktkategorier
+                                ViewCategories();
+                                // Skickar vidare till Villkoren för att genomföra ett köp
+                                Wallet.MakePurchase(); 
+                            }
                         break;
                     case 0:
                         // Metod som anvluta programmet
@@ -154,7 +165,20 @@ namespace TheVendingMachine.Services
                         ViewProductsMenu();
                         break; 
                     case 2:
-                        Wallet.MakePurchase();
+                        Console.Clear();
+                        // Man måste ha lagt i minst 15 kr för att kunna komma till alternativet att genomföra ett köp
+                        if (Wallet.moneyInMachine < 15)
+                            {
+                                Console.WriteLine("Please feed the machine to make a purchase");
+                                Console.WriteLine("Press a key to continue");
+                                Console.ReadKey();
+                                Wallet.InsertMoney();
+                            }
+                            else
+                            {
+                                // Skickar vidare till Villkoren för att genomföra ett köp
+                                Wallet.MakePurchase();
+                            }
                         break;
                     case 3:
                         Console.Clear(); 

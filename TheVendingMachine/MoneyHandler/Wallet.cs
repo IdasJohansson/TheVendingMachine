@@ -52,56 +52,56 @@ namespace TheVendingMachine.MoneyHandler
         {
             try
             {
-            Console.WriteLine();
-            Console.WriteLine("Enter number of the product you want to Buy to see product description and continue:  ");
-            Console.WriteLine("(Press [0] to return)");
-            int buyThis = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine();
+                Console.WriteLine("Enter number of the product you want to Buy to see product description and continue:  ");
+                Console.WriteLine("(Press [0] to return)");
+                int buyThis = Convert.ToInt32(Console.ReadLine());
 
                 // Backa tillbaka till produktmenyn om man ångrar sig
                 if (buyThis == 0)
                 {
-                    Console.Clear(); 
-                    Menus.ViewProductsMenu(); 
+                    Console.Clear();
+                    Menus.ViewProductsMenu();
                 }
 
-            // Går in i listan med produkter och hämtar objektet med id't som användaren har angett?
-            var productToBuy = Product.products.Find(x => x.ProductId == buyThis);
+                // Går in i listan med produkter och hämtar objektet med id't som användaren har angett?
+                var productToBuy = Product.products.Find(x => x.ProductId == buyThis);
 
-            // Hämtar kategorinamnet
-            var category = productToBuy.GetType().Name;
+                // Hämtar kategorinamnet
+                var category = productToBuy.GetType().Name;
 
-            // Instansierar ett objekt av produktkategorin
-            Product product = Product.CreateProduct(category);
+                // Instansierar ett objekt av produktkategorin
+                Product product = Product.CreateProduct(category);
 
-            // skapar ett objekt med namnet på den hämtade produkten..... Getproduct metoden kommer från category klassen som har ärvt den från product-klassen. 
-            IProduct iproduct = product.GetProduct(productToBuy.ProductName);
+                // skapar ett objekt med namnet på den hämtade produkten..... Getproduct metoden kommer från category klassen som har ärvt den från product-klassen. 
+                IProduct iproduct = product.GetProduct(productToBuy.ProductName);
 
-            // Vid köp av produkt så skall en kontroll ske; att användaren har
-            // matat in tillräckligt med pengar till automaten.Om inte så
-            // stoppas köpet.
-            var cost = productToBuy.ProductCost;
-            var checkbalance = CheckBalance(cost);
+                // Vid köp av produkt så skall en kontroll ske; att användaren har
+                // matat in tillräckligt med pengar till automaten.Om inte så
+                // stoppas köpet.
+                var cost = productToBuy.ProductCost;
+                var checkbalance = CheckBalance(cost);
 
-            if (checkbalance == true)
-            {
-                // Vid val av produkt ska användaren kunnas e produktens beskrivning innan man väljer att köpa varan:
-                iproduct.Description();
+                if (checkbalance == true)
+                {
+                    // Vid val av produkt ska användaren kunnas e produktens beskrivning innan man väljer att köpa varan:
+                    iproduct.Description();
 
-                // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
-                iproduct.Buy(cost);
-            }
-            else
-            {
-                Helper.ErrorColor("You need to enter more money...Press a key to continue");
-                Console.ReadKey();
-                // Skickar direkt vidare till metoden för att sätta in mer pengar
-                InsertMoney();
-            }
+                    // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
+                    iproduct.Buy(cost);
+                }
+                else
+                {
+                    Helper.ErrorColor("You need to enter more money...Press a key to continue");
+                    Console.ReadKey();
+                    // Skickar direkt vidare till metoden för att sätta in mer pengar
+                    InsertMoney();
+                }
             }
             catch (Exception e)
             {
                 Helper.ErrorColor(e.Message);
-                Helper.ReturnMenuMessage(); 
+                Helper.ReturnMenuMessage();
             }
         }
 
