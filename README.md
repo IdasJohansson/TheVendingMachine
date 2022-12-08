@@ -37,6 +37,8 @@ När något går fel ville jag att detta skulle synas extra tydligt genom att te
 
 En sak som sker ofta är att konsolen ska rensas och användaren ska skickas tillbaka till Start, därför gjorde jag en metod för detta också. 
 
+I min abstrakta klass valde jag utöver de properties som mina produkter skulle ha att använda mig av en statisk lista där alla produkter lagras. Den är statisk för att vara lätt att komma åt i alla delar av programmet genom produktklassen. 
+
 # Lärdomar 
 Jag har bland annat lärt mig nya saker om: 
 - Abstrakta klasser kombinerat med interfaces. 
