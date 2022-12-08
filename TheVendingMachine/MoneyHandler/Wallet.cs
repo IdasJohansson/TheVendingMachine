@@ -74,6 +74,7 @@ namespace TheVendingMachine.MoneyHandler
                 Product product = Product.CreateProduct(category);
 
                 // skapar ett objekt med namnet på den hämtade produkten..... Getproduct metoden kommer från category klassen som har ärvt den från product-klassen. 
+
                 IProduct iproduct = product.GetProduct(productToBuy.ProductName);
 
                 // Vid köp av produkt så skall en kontroll ske; att användaren har
