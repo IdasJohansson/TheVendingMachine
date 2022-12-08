@@ -31,7 +31,7 @@ namespace TheVendingMachine.Items
             set { productCost = value; }
         }
 
-        public CherrySoda()
+        public void AddProductInfo()
         {
             // Creating a Soda objekt
             Product product = Product.CreateProduct("Soda");
@@ -43,17 +43,14 @@ namespace TheVendingMachine.Items
             product.ProductCost = 15;
 
             // Add produkt Objekt to List of products (in Product class)
-            if (!Product.products.Contains(product))
-            {
-                Product.products.Add(product);
-            }
+            Product.products.Add(product);
         }
 
         public void Description()
         {
             DateTime date = DateTime.Now;
             DateTime bestBefore = date.AddYears(1);
-            string info = $"Product information: This softdrink contains carbonated soda, sugar and fruitjuice extracted from Cherrys harvested in the southern of Sweden. Best-before date: {bestBefore.ToString("dd-MM-yyyy")} ";
+            string info = $"Product information: This softdrink contains carbonated soda, sugar and fruitjuice extracted from Cherrys harvested in the southern of Sweden. Best-before date: {bestBefore.ToString("yyyy-MM-dd")} ";
             Console.WriteLine();
             Console.WriteLine(info);
         }

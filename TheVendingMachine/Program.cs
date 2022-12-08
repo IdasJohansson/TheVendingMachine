@@ -27,16 +27,25 @@ using TheVendingMachine.Services;
 //product.ProductInfo = "330ml"; 
 //product.ProductCost = 15;
 
-// Skapar alla produkter
 AppleSoda appleSoda = new AppleSoda();
+appleSoda.AddProductInfo(); 
 BlackcurrantSoda blackcurrantSoda = new BlackcurrantSoda();
+blackcurrantSoda.AddProductInfo();
 CherrySoda cherrySoda = new CherrySoda();
+cherrySoda.AddProductInfo();
 ElderberrySorbet elderberrySorbet = new ElderberrySorbet();
+elderberrySorbet.AddProductInfo();
 LemonSorbet lemonSorbet = new LemonSorbet();
+lemonSorbet.AddProductInfo();
 MangoSorbet mangoSorbet = new MangoSorbet();
+mangoSorbet.AddProductInfo();
 Raspberry raspberry = new Raspberry();
+raspberry.AddProductInfo();
 Strawberry strawberry = new Strawberry();
+strawberry.AddProductInfo();
 Wildberry wildberry = new Wildberry();
+wildberry.AddProductInfo();
+
 
 // Tar fram startMenyn
 Menus.StartMenu();

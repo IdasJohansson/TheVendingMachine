@@ -37,7 +37,7 @@ namespace TheVendingMachine.MoneyHandler
 
             // Kollar så att pengarna som går att använda i maskinen är större än produktkostnaden
             // returnerar true om det är tillräckligt, annars false. 
-            if (moneyInMachine > productCost)
+            if (moneyInMachine >= productCost)
             {
                 return true; 
             }
@@ -64,10 +64,10 @@ namespace TheVendingMachine.MoneyHandler
                     Menus.ViewProductsMenu();
                 }
 
-                // Går in i listan med produkter och hämtar objektet med id't som användaren har angett?
+                // Går in i listan med produkter och hämtar objektet med id't som användaren har angett
                 var productToBuy = Product.products.Find(x => x.ProductId == buyThis);
 
-                // Hämtar kategorinamnet
+                // Lagrar kategorinamnet på den valda produkten i variabeln category
                 var category = productToBuy.GetType().Name;
 
                 // Instansierar ett objekt av produktkategorin

@@ -31,7 +31,7 @@ namespace TheVendingMachine.Items
             set { productCost = value; }
         }
 
-        public Raspberry()
+        public void AddProductInfo()
         {
             // Creating a Berry objekt
             Product product = Product.CreateProduct("Berry");
@@ -43,17 +43,14 @@ namespace TheVendingMachine.Items
             product.ProductCost = 40;
 
             // Objekt to List of products 
-            if (!Product.products.Contains(product))
-            {
-                Product.products.Add(product);
-            }
+            Product.products.Add(product);
         }
 
         public void Description ()
         {
             DateTime date = DateTime.Now;
             DateTime bestBefore = date.AddDays(7);
-            string info = $"Theese berries are handpicked in the southern of Sweden. Best-before date: {bestBefore.ToString("dd-MM-yyyy")} ";
+            string info = $"Theese berries are handpicked in the southern of Sweden. Best-before date: {bestBefore.ToString("yyyy-MM-dd")} ";
             Console.WriteLine();
             Console.WriteLine(info);
         }

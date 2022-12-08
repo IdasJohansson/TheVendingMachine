@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using TheVendingMachine.Interfaces;
 using TheVendingMachine.MoneyHandler;
@@ -32,7 +34,7 @@ namespace TheVendingMachine.Items
             set { productCost = value; }
         }
 
-        public AppleSoda()
+        public void AddProductInfo()
         {
             // Creating a Soda objekt
             Product product = Product.CreateProduct("Soda");
@@ -41,18 +43,16 @@ namespace TheVendingMachine.Items
             product.ProductName = "AppleSoda";
             product.ProductInfo = "330ml";
             product.ProductCost = 15;
+
             // Add produkt Objekt to List of products (in Product class)
-            if (!Product.products.Contains(product))
-            {
-                Product.products.Add(product);
-            }
+            Product.products.Add(product);
         }
 
         public void Description()
         {
             DateTime date = DateTime.Now;
             DateTime bestBefore = date.AddYears(1);
-            string info = $"Product information: This softdrink contains carbonated soda, sugar and fruitjuice extracted from Apples harvested in the southern of Sweden. Best-before date: {bestBefore.ToString("dd-MM-yyyy")} ";
+            string info = $"Product information: This softdrink contains carbonated soda, sugar and fruitjuice extracted from Apples harvested in the southern of Sweden. Best-before date: {bestBefore.ToString("yyyy-MM-dd")} ";
             Console.WriteLine();
             Console.WriteLine(info);
         }

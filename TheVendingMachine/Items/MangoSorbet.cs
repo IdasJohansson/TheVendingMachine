@@ -31,7 +31,7 @@ namespace TheVendingMachine.Items
             set { productCost = value; }
         }
 
-        public MangoSorbet()
+        public void AddProductInfo()
         {
             // Creating a Sorbet objekt
             Product product = Product.CreateProduct("Sorbet");
@@ -43,10 +43,7 @@ namespace TheVendingMachine.Items
             product.ProductCost = 25;
 
             // Add Objekt to List of products 
-            if (!Product.products.Contains(product))
-            {
-                Product.products.Add(product);
-            }
+            Product.products.Add(product);
         }
 
         public void Description()
@@ -54,7 +51,7 @@ namespace TheVendingMachine.Items
             Console.WriteLine();
             DateTime date = DateTime.Now;
             DateTime bestBefore = date.AddMonths(1);
-            Console.WriteLine($"This sorbet is made of sugar and fruitjuice extracted from Mangos harvested in the southern of Europe. Best-before date: {bestBefore.ToString("dd-MM-yyyy")} ");
+            Console.WriteLine($"This sorbet is made of sugar and fruitjuice extracted from Mangos harvested in the southern of Europe. Best-before date: {bestBefore.ToString("yyyy-MM-dd")} ");
         }
 
         public void Buy(int cost)
