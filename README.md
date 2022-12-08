@@ -9,7 +9,9 @@ med att skapa en produkt som ärver från en abstrakt klass och har ett interfac
 tidigare valde jag att utgå från "Abstract factory pattern". I mitt program har jag därför en abstrakt klass som heter Product,
 och ett interface som heter IProduct. Som en mellannivå har jag tre klasser med produkt-kategorier (Soda, Berry, Sorbet) som ärven från den abstrakta klassen och sedan en klass per produkt som också ärver från produktklassen samt där interfacet implementeras. 
 
-Kategoriklasserna kom in ganska sent i arbetsprocessen då jag enkelt ville kunna kategorisera de olika produkterna. Från början funderade jag på om produkterna skulle ha en property som var en kategori och dela in dom på det sättet. Men jag valde en annan lösning efter att ha lärt mig använda den inbyggda metoden "GetType().Name". Så när en produkt skapas och får sina värden sker detta genom kategoriklassen. 
+Kategoriklasserna var de klasser som jag skapade sist i min arbetsprocess utav klasserna. Från början funderade jag på om produkterna skulle ha en property som var en kategori och dela in dom på det sättet. Men jag valde en annan lösning efter att ha lärt mig använda den inbyggda metoden "GetType().Name". Så när en produkt skapas och får sina värden sker detta genom kategoriklassen. 
+
+Efter att ha satt grundstrukturen med Abstrakt klass, interface och produkter adderade jag två service klasser, Helper och Menus. Menus eftersom jag visste att jag skulle behöva flertalet menyer och en Helper-klass där jag ville lägga medtoder som mest hade med visuella effekter i konsollen att göra. Denna innehåller därför metoder som byter färg och ascii-art. 
 
 ![image](https://user-images.githubusercontent.com/89834477/206554880-48b5fc0d-b239-4b8a-9262-a9da30c84b57.png)
 
