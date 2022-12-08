@@ -13,7 +13,7 @@ Kategoriklasserna var de klasser som jag skapade sist i min arbetsprocess utav k
 
 Efter att ha satt grundstrukturen med Abstrakt klass, interface och produkter adderade jag två service klasser, Helper och Menus. Menus eftersom jag visste att jag skulle behöva flertalet menyer och en Helper-klass där jag ville lägga övriga medtoder som mest hade med visuella effekter i konsollen att göra. Denna innehåller därför metoder som byter färg samt ascii-art. 
 
-För att kunna köpa produkter i maskinen skapade jag två klasser som hanterar pengar i programmet. Den huvudsakliga klassen Wallet samt en klass som hanterar pengarna som ska returneras, Change. I min Wallet började jag med att skapa tre variabler med utgånsvärdena för vilka mynt den skulle innehålla, en variabel som summerar deras värden, en variabel som lagrar pengar som matas in i maskinen samt en variabel som lagrar de pengar som användaren har handlat för. Dessa variabler Uppdateras under programmets gång i de olika metoderna i plånboken. 
+För att kunna köpa produkter i maskinen skapade jag två klasser som hanterar pengar i programmet. Den huvudsakliga klassen Wallet samt en klass som hanterar pengarna som ska returneras, Change. I min Wallet började jag med att skapa tre variabler med utgånsvärdena för vilka mynt den skulle innehålla, en variabel som summerar deras värden, en variabel som lagrar pengar som matas in i maskinen samt en variabel som lagrar de pengar som användaren har handlat för. Dessa variabler uppdateras under programmets gång i de olika metoderna i plånboken. 
 
 Detta är mapp/fil-strukturen i projektet: 
 
@@ -21,10 +21,13 @@ Detta är mapp/fil-strukturen i projektet:
 
 # Flödet
 När man starta programmet körs en metod som gör att alla produkter som ska säljas i Varuautomaten får värden, dvs ProductId, ProductName, ProductInfo samt ProductCost. Produkterna läggs även till i en statisk lista i Poduktklassen.  
-Nästa metoden som körs är en Startmeny metod där man får välja mellan att visa produkter, stoppa i pengar, göra ett köp eller stänga av maskinen. I startmenyn anropas en metod som visar upp hur mycket pengar som finns i plånboken samt hur mycket pengar som finns i maskinen. Menyn är en switch som anropar olika metoder beroende på val.
+Nästa metoden som körs är en Startmeny metod där man får välja mellan att visa produkter, stoppa i pengar, göra ett köp eller stänga av maskinen. I startmenyn anropas en metod som visar upp hur mycket pengar som finns i plånboken samt hur mycket pengar som finns i maskinen. Menyn är en switch som anropar olika metoder beroende på användarens val.
 
-Väljer man att visa produkter, skickas man först till ett val där man får välja kategori och när kategorins produkter visas upp visas även en annan meny upp där man får välja vad man vill göra härnäst. 
+Väljer man att visa produkter, skickas man först till en meny där man får välja kategori och när kategorins produkter visas upp visas även en annan meny upp där man får välja vad man vill göra härnäst. Då kan man välja mellan att sätta i pengar, göra ett köp, gå tillbaka till start eller stänga av programmet. Både valet att lägga i pengar eller köpa en produkt skickar vidare till metoden att lägga i pengar i maskinen om variabeln som lagrar pengar i maskinen är mindre än 15. Eftersom plånboken enbart innehåller en kronor, femkronor och tiokronor är det bara dessa valörer som användaren kan mata in i maskinen. 
 
+Om man har lagt i minst 15kr, vilket är den lägsta produktkostnaden, i maskinen skickas man vidare till metoden där man kan välja produkt och genomföra ett köp. Det första som händer i den metoden är att användaren får välja en produkt och sedan kollar en metod som returnerar en bool av om användaren matat i tillräckligt med pengar i maskinen. Om inte skickas den till tidigare nämda metod där man får lägga i pengar. Om det finns tillräckligt med pengar skrivs produktens information ut och användaren för välja att bekräfta köpet eller återgå till menyn. Väljer man att bekräfta köpet så används produkten och användaren blir efter detta returnerad till Startmenyn där det återigen går att välja om man vill se produkter, lägga i pengar, göra ett köp eller stänga av maskinen. 
+
+När användaren väljer att stänga av maskinen ska pengar returneras i högsta möjliga valör. Denna uträkning sker i klassen Changes konstruktor. Där man genom division och modulus räknar ut hur många utav varje valör som eventuellt ska returneras till användaren. 
 
 # Olika val 
 I mina menyer har jag valt att använda mig av switch cases då användaren i varje meny får tre eller flera val att göra som programet tar in som en input. 
