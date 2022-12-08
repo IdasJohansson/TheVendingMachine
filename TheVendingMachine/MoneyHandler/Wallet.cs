@@ -7,14 +7,14 @@ namespace TheVendingMachine.MoneyHandler
     public class Wallet
     {
         // När programet startas finns det 10 mynt av enkronor, femkronor och tiokornor vardera i plånboken
-        public static int oneSek = 10 * 1;
-        public static int fiveSek = 10 * 5;
-        public static int tenSek = 10 * 10;
+        private static int oneSek = 10 * 1;
+        private static int fiveSek = 10 * 5;
+        private static int tenSek = 10 * 10;
 
         // moneyInMachine får ett värde när pengar matas in maskinen
         public static int moneyInMachine;
         // usedMoneyINmachine får ett värde när man handlar för pengar man matat in i maskinen 
-        public static int usedMoneyInMachine; 
+        public static int usedMoneyInMachine;
 
         // Summering av pengarna i plånboken (160 kr)
         public static int moneyInWallet = oneSek + fiveSek + tenSek; 
