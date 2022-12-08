@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using TheVendingMachine.Interfaces;
 using TheVendingMachine.MoneyHandler;
@@ -6,16 +8,36 @@ using TheVendingMachine.Services;
 
 namespace TheVendingMachine.Items
 {
-    public class AppleSoda : IProduct
+    public class AppleSoda : Product, IProduct
     {
+        public override int ProductId
+        {
+            get { return productId; }
+            set { productId = value; }
+        }
+
+        public override string ProductName
+        {
+            get { return productName; }
+            set { productName = value; }
+        }
+
+        public override string ProductInfo
+        {
+            get { return productInfo; }
+            set { productInfo = value; }
+        }
+
+        public override int ProductCost
+        {
+            get { return productCost; }
+            set { productCost = value; }
+        }
+
         public void AddProductInfo()
         {
             // Creating a Soda objekt
             Product product = Product.CreateProduct("Soda");
-
-            // Getting a Soda objekt of the type AppleSoda
-            // product.GetProduct("AppleSoda"); 
-
             // Giving the AppleSoda objekt values
             product.ProductId = 1;
             product.ProductName = "AppleSoda";
@@ -30,7 +52,7 @@ namespace TheVendingMachine.Items
         {
             DateTime date = DateTime.Now;
             DateTime bestBefore = date.AddYears(1);
-            string info = $"Product information: This softdrink contains carbonated soda, sugar and fruitjuice extracted from Apples harvested in the southern of Sweden. Best-before date: {bestBefore.ToString("dd-MM-yyyy")} ";
+            string info = $"Product information: This softdrink contains carbonated soda, sugar and fruitjuice extracted from Apples harvested in the southern of Sweden. Best-before date: {bestBefore.ToString("yyyy-MM-dd")} ";
             Console.WriteLine();
             Console.WriteLine(info);
         }

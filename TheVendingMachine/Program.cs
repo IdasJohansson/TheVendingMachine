@@ -28,19 +28,17 @@ using TheVendingMachine.Services;
 //product.ProductCost = 15;
 
 AppleSoda appleSoda = new AppleSoda();
-appleSoda.AddProductInfo();
+appleSoda.AddProductInfo(); 
 BlackcurrantSoda blackcurrantSoda = new BlackcurrantSoda();
 blackcurrantSoda.AddProductInfo();
 CherrySoda cherrySoda = new CherrySoda();
-cherrySoda.AddProductInfo(); 
-
+cherrySoda.AddProductInfo();
 ElderberrySorbet elderberrySorbet = new ElderberrySorbet();
 elderberrySorbet.AddProductInfo();
 LemonSorbet lemonSorbet = new LemonSorbet();
 lemonSorbet.AddProductInfo();
 MangoSorbet mangoSorbet = new MangoSorbet();
-mangoSorbet.AddProductInfo(); 
-
+mangoSorbet.AddProductInfo();
 Raspberry raspberry = new Raspberry();
 raspberry.AddProductInfo();
 Strawberry strawberry = new Strawberry();
@@ -48,25 +46,6 @@ strawberry.AddProductInfo();
 Wildberry wildberry = new Wildberry();
 wildberry.AddProductInfo();
 
-
-
-
-
-OrangeSoda soda = new OrangeSoda();
-soda.CreateSoda();
-
-soda.GetProduct("OrangeSoda");
-
-
-//OrangeSoda orange = new OrangeSoda();
-//Soda orange = new Soda(); 
-//orange.GetProduct("OrangeSoda");
-//Product.products.Add(orange);
-//Console.WriteLine(orange.ProductName);
-
-//OrangeSoda orangeSoda = new OrangeSoda();
-//orangeSoda.GetProduct("OrangeSoda");
-//Console.WriteLine(orangeSoda.ProductName);
 
 // Tar fram startMenyn
 Menus.StartMenu();

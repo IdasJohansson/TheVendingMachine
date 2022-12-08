@@ -5,17 +5,38 @@ using TheVendingMachine.Services;
 
 namespace TheVendingMachine.Items
 {
-	public class ElderberrySorbet : IProduct
+	public class ElderberrySorbet : Product, IProduct
 	{
+        public override int ProductId
+        {
+            get { return productId; }
+            set { productId = value; }
+        }
+
+        public override string ProductName
+        {
+            get { return productName; }
+            set { productName = value; }
+        }
+
+        public override string ProductInfo
+        {
+            get { return productInfo; }
+            set { productInfo = value; }
+        }
+
+        public override int ProductCost
+        {
+            get { return productCost; }
+            set { productCost = value; }
+        }
+
         public void AddProductInfo()
         {
             // Creating a Sorbet objekt
             Product product = Product.CreateProduct("Sorbet");
 
-            // Getting a Sorbet objekt of the type ElderberrySorbet
-            // product.GetProduct("ElderberrySorbet");
-
-            // Giving the LemonSorbet objekt values
+            // Giving the ElderberrySorbet objekt values
             product.ProductId = 4;
             product.ProductName = "ElderberrySorbet";
             product.ProductInfo = "250ml";
@@ -30,7 +51,8 @@ namespace TheVendingMachine.Items
             Console.WriteLine();
             DateTime date = DateTime.Now;
             DateTime bestBefore = date.AddMonths(1);
-            Console.WriteLine($"This sorbet is made of sugar and fruitjuice extracted from Elderberries harvested in the southern of Sweden. Best-before date: {bestBefore.ToString("dd-MM-yyyy")} ");
+            Console.WriteLine($"This sorbet is made of sugar and fruitjuice extracted from Elderberries harvested in the southern of Sweden. Best-before date: {bestBefore.ToString("yyyy-MM-dd")} ");
+
         }
 
         public void Buy(int cost)

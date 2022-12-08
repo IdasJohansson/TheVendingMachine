@@ -30,19 +30,6 @@ namespace TheVendingMachine.Items
             set { productCost = value; }
         }
 
-        public override IProduct GetProduct(string ProductItemType)
-        {
-            if (ProductItemType.Equals("LemonSorbet"))
-                return new LemonSorbet();
-            else if (ProductItemType.Equals("ElderberrySorbet"))
-                return new ElderberrySorbet();
-            else if (ProductItemType.Equals("MangoSorbet"))
-                return new MangoSorbet(); 
-            else
-                Helper.ErrorColor("Something went wrong with sorbets.");
-                Helper.ReturnMenuMessage();
-            return null;
-        }
     }
 }
 

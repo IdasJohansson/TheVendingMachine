@@ -5,16 +5,35 @@ using TheVendingMachine.Services;
 
 namespace TheVendingMachine.Items
 {
-	public class BlackcurrantSoda : IProduct
+	public class BlackcurrantSoda : Product, IProduct
 	{
+        public override int ProductId
+        {
+            get { return productId; }
+            set { productId = value; }
+        }
+
+        public override string ProductName
+        {
+            get { return productName; }
+            set { productName = value; }
+        }
+
+        public override string ProductInfo
+        {
+            get { return productInfo; }
+            set { productInfo = value; }
+        }
+
+        public override int ProductCost
+        {
+            get { return productCost; }
+            set { productCost = value; }
+        }
+
         public void AddProductInfo()
         {
-            // Creating a Soda objekt
             Product product = Product.CreateProduct("Soda");
-
-            // Getting a Soda objekt of the type BlackcurrantSoda
-            //product.GetProduct("BlackcurrantSoda");
-
             // Giving the Blackcurrent objekt values
             product.ProductId = 2;
             product.ProductName = "BlackcurrantSoda";
@@ -29,7 +48,7 @@ namespace TheVendingMachine.Items
         {
             DateTime date = DateTime.Now;
             DateTime bestBefore = date.AddYears(1);
-            string info = $"Product information: This softdrink contains carbonated soda, sugar and fruitjuice extracted from Blackcurrant harvested in the southern of Sweden. Best-before date: {bestBefore.ToString("dd-MM-yyyy")} ";
+            string info = $"Product information: This softdrink contains carbonated soda, sugar and fruitjuice extracted from Blackcurrants harvested in the southern of Sweden. Best-before date: {bestBefore.ToString("yyyy-MM-dd")} ";
             Console.WriteLine();
             Console.WriteLine(info);
         }

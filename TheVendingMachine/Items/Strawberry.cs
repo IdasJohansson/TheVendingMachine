@@ -5,15 +5,36 @@ using TheVendingMachine.Services;
 
 namespace TheVendingMachine.Items
 {
-	public class Strawberry : IProduct
+	public class Strawberry : Product, IProduct
 	{
+        public override int ProductId
+        {
+            get { return productId; }
+            set { productId = value; }
+        }
+
+        public override string ProductName
+        {
+            get { return productName; }
+            set { productName = value; }
+        }
+
+        public override string ProductInfo
+        {
+            get { return productInfo; }
+            set { productInfo = value; }
+        }
+
+        public override int ProductCost
+        {
+            get { return productCost; }
+            set { productCost = value; }
+        }
+
         public void AddProductInfo()
         {
             // Creating a Berry objekt
             Product product = Product.CreateProduct("Berry");
-
-            // Getting a Berry objekt of the type Strawberry
-            // product.GetProduct("Strawberry");
 
             // Giving the LemonSorbet objekt values
             product.ProductId = 8;
@@ -29,7 +50,7 @@ namespace TheVendingMachine.Items
         {
             DateTime date = DateTime.Now;
             DateTime bestBefore = date.AddDays(7);
-            string info = $"Theese berries are handpicked in the southern of Sweden. Best-before date: {bestBefore.ToString("dd-MM-yyyy")} ";
+            string info = $"Theese berries are handpicked in the southern of Sweden. Best-before date: {bestBefore.ToString("yyyy-MM-dd")} ";
             Console.WriteLine();
             Console.WriteLine(info);
         }
