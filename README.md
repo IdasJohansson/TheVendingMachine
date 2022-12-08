@@ -38,6 +38,7 @@ En sak som sker ofta är att konsolen ska rensas och användaren ska skickas til
 Jag har bland annat lärt mig nya saker om: 
 - Abstrakta klasser kombinerat med interfaces. 
 - GetType().Name
+- Konstruktorer
 
 # Utmaningar
 En utmaning jag hade var att bestämma hur jag skulle skapa mina produkt-objekt och tilldela dem värden. Jag fastnade lite i att från börja göra detta i en metod och även om jag under processens gång tidvis gjorde detta i konstruktorn blev det tillslut ändå i en metod då jag bara ville tilldela värdena en gång och inte varje gång man anropade konstruktorn.  
