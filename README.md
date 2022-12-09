@@ -73,14 +73,8 @@ En sak som sker ofta är att konsolen ska rensas och användaren ska skickas til
 
 I min abstrakta klass valde jag utöver de properties som mina produkter skulle ha att använda mig av en statisk lista där alla produkter lagras. Den är statisk för att vara lätt att komma åt i alla delar av programmet genom produktklassen. I denna klass finns också en metod som skapar produkter av en viss kategori samt en metod som hämtar produkter med ett visst produktnamn. I dessa två metoder har jag valt att använda mig av if/else if satser som returnerar antingen en kategoriklass eller en produktklass där inputen i metoden avgör vilken specifik klass som returneras. 
 
-# Lärdomar 
-Jag har bland annat lärt mig nya saker om: 
-- Abstrakta klasser kombinerat med interfaces. 
-- GetType().Name
-- Konstruktorer
-
-# Utmaningar
-En utmaning jag hade var att bestämma hur jag skulle skapa mina produkt-objekt och tilldela dem värden. Jag fastnade lite i att från börja göra detta i en metod och även om jag under processens gång tidvis gjorde detta i konstruktorn blev det tillslut ändå i en metod då jag bara ville tilldela värdena en gång och inte varje gång man anropade konstruktorn.  
+# Reflektioner
+En utmaning jag hade var att bestämma hur jag skulle tilldela värden till mina produkter. Jag fastnade lite i att från börja göra detta i en metod och även om jag under processens gång tidvis gjorde detta i konstruktorn blev det tillslut ändå i en metod då jag bara ville tilldela värdena en gång och inte varje gång man anropade konstruktorn.  
 
 Den största lärdomen jag har fått i projektet är att ju mer man planerar innan desto enklare blir det att göra programuppbyggnaden effektiv. Hade jag fått göra om projektet kanske jag skulle ha skrivit programmet i pseudokod först samt ritat upp ett flödesdiagram för att lättare får en överblick över vilka metoder samt vilken funktionalitet jag ville få med och i vilken ordning i flödet dessa skulle ha. 
 
