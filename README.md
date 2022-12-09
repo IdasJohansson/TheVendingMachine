@@ -63,9 +63,9 @@ När användaren väljer att stänga av maskinen ska pengar returneras i högsta
 ![image](https://user-images.githubusercontent.com/89834477/206699851-874116f1-f157-44c8-8c91-8ea144009b8c.png)
 
 
-# Olika val 
+# Metoduppbyggnader  
 I mina menyer har jag valt att använda mig av switch cases då användaren i varje meny får tre eller flera val att göra som programmet tar in som en input. 
-Jag valde att ta in siffror som inputs då det blir det enkelt att sätta upp en switch struktur med ett case per siffra. Mina switchar/menyer ligger också i en try catch och på detta sätt tycker jag att felhanteringen blir lätthanterlig. Om användaren skriver in en siffra som inte är valbar i menyn skickas man till default delen i switchen och om man skriver något som inte är en siffra skickas man in i catchen som genom Exeption message skriver ut att det var ett felaktigt format. 
+Jag valde att ta in siffror som inputs då det blir det enkelt att sätta upp en switch struktur med ett case per siffra. Mina switchar/menyer ligger också i en try catch och på detta sätt tycker jag att felhanteringen blir lätthanterlig. Om användaren skriver in en siffra som inte är valbar i menyn skickas man till default delen i switchen och om man skriver något som inte är en siffra skickas man in i catchen som genom Exeption message skriver ut att det var ett felaktigt format. Try catch, har jag valt att använda i stora delar av programmet för att programmet inte ska krascha när nåfot går fel utan istället skriva ut ett felmeddelande.
 
 När något går fel ville jag att detta skulle synas extra tydligt genom att texten ska byta färg till röd. Därför gjorde jag en metod som tar in en textsträng som input och byter färg på denna till röd. Denna metod använder jag på många ställen så istället för att varje gång jag vill byta färg på en text behöva skriva minst tre rader med kod räcker det nu med en rad genom att jag anropar metoden och skickar med textsträngen som ska byta färg. 
 
@@ -76,7 +76,7 @@ I min abstrakta klass valde jag utöver de properties som mina produkter skulle 
 # Reflektioner
 En utmaning jag hade var att bestämma hur jag skulle tilldela värden till mina produkter. Jag fastnade lite i att från börja göra detta i en metod och även om jag under processens gång tidvis gjorde detta i konstruktorn blev det tillslut ändå i en metod då jag bara ville tilldela värdena en gång och inte varje gång man anropade konstruktorn.  
 
-Den största lärdomen jag har fått i projektet är att ju mer man planerar innan desto enklare blir det att göra programuppbyggnaden effektiv. Hade jag fått göra om projektet kanske jag skulle ha skrivit programmet i pseudokod först samt ritat upp ett flödesdiagram för att lättare får en överblick över vilka metoder samt vilken funktionalitet jag ville få med och i vilken ordning i flödet dessa skulle ha. 
+Den största lärdomen jag har fått i projektet är att ju mer man planerar innan desto enklare blir det att göra programuppbyggnaden effektiv. Hade jag fått göra om projektet kanske jag skulle ha skrivit programmet i pseudokod först samt ritat upp ett flödeschema för att lättare får en överblick över vilka metoder samt vilken funktionalitet jag ville få med och i vilken ordning i flödet dessa skulle ha. 
 
 Något som jag gärna hade förbättrat med projektet är att det känns som att det är väldigt mycket upprepande kod i de olika produktklasserna då metoderna där i ser väldigt lika ut bortsett från unika saker som Produktnamn och Description. 
 En annan sak jag har funderat över är hur "effektiv" koden är skriven, tex hur lång tid olika kommandon tar osv. Detta hade jag också gärna förbättrat men vet i nuläget inte hur jag skulle gå tillväga för att göra. 
