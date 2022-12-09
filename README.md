@@ -1,10 +1,29 @@
 # TheVendingMachine
 
-Inlämningsuppgift VaruAotomat i kursen avancerad OOP 2022. 
+Inlämningsuppgift Automat Konsol i kursen avancerad OOP HT 2022. 
+
+# Bakgrund
+Uppgiften går ut på att skriva ett program som är en konsol applikation som fungerar som en varuautomat för att öva på att skriva ett program efter en enkel kravspecifikation. 
+
+Kraven innefattar kortfattat följande: 
+Funktionalitet:
+- Automaten ska erbjuda produkter i tre olika kategorier med minst tre produkter i varje kategori. 
+- Användaren ska kunna se information om varje produkt innan köp samt kunna köpa och använda produkten. 
+- Varje produkt ska ha en kostnad som ska visas innan man köper produkten.
+- Användaren ska kunna avbryta köpet och gå tillbaka till menyn. Eller skickas tillbaka till menyn efter genomfört köp.
+- Vid genomförande av köp ska programmet kontrollera att det finns tillräckligt med pengar i maskinen.
+- Användaren ska ha en plånbok med 10 enkronor, 10 femkronor samt 10 tiokronor. 
+- Användaren ska genom ett menyval kunna mata in pengar i maskinen, samt se hur mycket som finns i maskinen respektive i plånboken. 
+- Användaren ska genom ett menyval kunna avsluta programmet och kvarvarande pengar ska returneras i högsta möjliga valörer (1, 5, 10, 20, 50, 100)
+
+Struktur: 
+- Varje produkt ska ha en egen klass men ett interface och ärver från samma abstrakta klass.
+- Den abstrakta klassen ska innehålla attribut för namn, kostnad samt beskrivning. 
+- Interfacet ska innehålla metoderna Description, Buy() och Use(). 
+- Plånboken ska vara en egen klass, där användarens pengar sparas och uppdateras. 
 
 # Arbetsprocess
-Efter att ha läst igenom kraven för denna uppgiften visst jag inte riktigt hur eller vart jag skulle börja.
-Som hjälp för att hitta en utgångspunkt valde jag därför att börja med att sätta upp en struktur för att matcha kriterierna
+Som hjälp för att hitta en utgångspunkt valde jag att börja med att sätta upp en struktur för att matcha kriterierna
 med att skapa en produkt som ärver från en abstrakt klass och har ett interface. Då jag inte arbetat med abstrakta klasser 
 tidigare valde jag att utgå från "Abstract factory pattern". I mitt program har jag därför en abstrakt klass som heter Product,
 och ett interface som heter IProduct. Som en mellannivå har jag tre klasser med produkt-kategorier (Soda, Berry, Sorbet) som ärven från den abstrakta klassen och sedan en klass per produkt som också ärver från produktklassen samt där interfacet implementeras. 
