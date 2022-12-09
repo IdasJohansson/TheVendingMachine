@@ -6,6 +6,7 @@ Inlämningsuppgift Automat Konsol i kursen avancerad OOP HT 2022.
 Uppgiften går ut på att skriva ett program som är en konsol applikation som fungerar som en varuautomat för att öva på att skriva ett program efter en enkel kravspecifikation. 
 
 Kraven innefattar kortfattat följande: 
+
 Funktionalitet:
 - Automaten ska erbjuda produkter i tre olika kategorier med minst tre produkter i varje kategori. 
 - Användaren ska kunna se information om varje produkt innan köp samt kunna köpa och använda produkten. 
