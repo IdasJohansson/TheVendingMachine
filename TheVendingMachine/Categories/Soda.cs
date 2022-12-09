@@ -4,6 +4,7 @@ using TheVendingMachine.Services;
 
 namespace TheVendingMachine.Items
 {
+    // Kategoriklassen ärver properties från Product
     public class Soda : Product
     {
         public override int ProductId

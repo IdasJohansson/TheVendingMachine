@@ -3,7 +3,7 @@ namespace TheVendingMachine.Services
 {
 	public class Helper
 	{
-        // Method that changes color of the text when something dosen't go as planned
+        // Metod som ändrar färg på texten till röd
         public static void ErrorColor(string text)
         {
             Console.Clear();
@@ -12,6 +12,7 @@ namespace TheVendingMachine.Services
             Console.ResetColor();
         }
 
+        // Metod som används för att skicka tillbaka användaren till menyn
         public static void ReturnMenuMessage()
         {
             Console.WriteLine();
@@ -24,6 +25,7 @@ namespace TheVendingMachine.Services
             Menus.StartMenu();
         }
 
+        // Rubriken i startmenyn
         public static void HeadLine()
         {
             Console.WriteLine(@"
@@ -39,6 +41,17 @@ namespace TheVendingMachine.Services
 ");
         }
 
+        public static void ByeBye()
+        {
+            Console.WriteLine(@"
+ ____ ____ ____ 
+||B |||Y |||E ||
+||__|||__|||__||
+|/__\|/__\|/__\|
+");
+        }
+
+        // Symbol som används i Use metoden när användaren har köpt en produkt
         public static void SodaSymbol()
         {
             Console.WriteLine(@"
@@ -57,7 +70,7 @@ namespace TheVendingMachine.Services
           '''''");
         }
 
-
+        // Symbol som används i Use metoden när användaren har köpt en produkt
         public static void StrawberrySymbol()
         {
             Console.WriteLine(@"
@@ -69,6 +82,7 @@ namespace TheVendingMachine.Services
          `""`");
         }
 
+        // Symbol som används i Use metoden när användaren har köpt en produkt
         public static void RasberrySymbol()
         {
             Console.WriteLine(@"
@@ -79,6 +93,7 @@ namespace TheVendingMachine.Services
        `'""'´");
         }
 
+        // Symbol som används i Use metoden när användaren har köpt en produkt
         public static void BlueberrySymbol()
         {
             Console.WriteLine(@"
@@ -95,7 +110,7 @@ namespace TheVendingMachine.Services
               '--'");
         }
 
-
+        // Symbol som används i Use metoden när användaren har köpt en produkt
         public static void SorbetSymbol()
         {
             Console.WriteLine(@"

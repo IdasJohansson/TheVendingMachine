@@ -24,7 +24,7 @@ namespace TheVendingMachine.Services
                 Console.WriteLine("[0] Turn machine off");
                 Console.WriteLine();
 
-                // Visar upp pengarna
+                // Visar upp saldot i plånboken respektive pengar man har att handla för i maskinen
                 Wallet.ViewBalance(); 
 
                 int input = Convert.ToInt32(Console.ReadLine());
@@ -34,32 +34,19 @@ namespace TheVendingMachine.Services
                     case 1:
                         Console.Clear();
                         // Visar lista av produktkategorier
-                        ViewCategories(); 
+                        ViewCategories();
+                        // Visar även upp en meny men vad man vill göra härnäst, efter att ha valt kategori
                         ViewProductsMenu();
                         break;
                     case 2:
                         // Skickar vidare till funktionen för att sätta in pengar
                         Wallet.InsertMoney();
-                        // Visar även upp en meny men vad man vill göra härnäst
-                        ViewProductsMenu(); 
                         break;
                     case 3:
                         Console.Clear();
-                            // Man måste ha lagt i minst 15 kr för att kunna komma till alternativet att genomföra ett köp
-                            if (Wallet.moneyInMachine < 15)
-                            {
-                                Console.WriteLine("Please feed the machine to make a purchase");
-                                Console.WriteLine("Press a key to continue");
-                                Console.ReadKey(); 
-                                Wallet.InsertMoney();
-                            }
-                            else
-                            {
-                                // Visar lista av produktkategorier
-                                ViewCategories();
-                                // Skickar vidare till Villkoren för att genomföra ett köp
-                                Wallet.MakePurchase(); 
-                            }
+                        // Metod som kollar att man måste ha lagt i minst 15 kr för att kunna komma till alternativet att göra ett köp
+                        // Den skickar antingen till Make purchase, eller Insert money
+                        Wallet.CheckIfMoneyInserted(); 
                         break;
                     case 0:
                         // Metod som anvluta programmet
@@ -87,7 +74,6 @@ namespace TheVendingMachine.Services
             try
             {
                 Console.WriteLine("Select category:");
-
                 Console.WriteLine("[1] SODA");
                 Console.WriteLine("[2] SORBET");
                 Console.WriteLine("[3] BERRY");
@@ -129,12 +115,13 @@ namespace TheVendingMachine.Services
         // Visar upp en lista med produkter inom vald produktkategori
         public static void ViewProductList(string category)
         {
+            try
+            {
             Console.Clear();
             var products = Product.products; 
             foreach (var item in products)
             {
                 var productCategory = item.GetType().Name;
-
                 if (category == productCategory)
                 {
                     Console.Write($"{item.ProductId} {item.ProductName} - ");
@@ -142,9 +129,15 @@ namespace TheVendingMachine.Services
                     Console.WriteLine($"{item.ProductInfo} ");
                 }
             }
+            }
+            catch (Exception e)
+            {
+                Helper.ErrorColor(e.Message);
+                Helper.ReturnMenuMessage();
+            }
         }
 
-
+        // Meny som visas upp när man har valt att titta på listan av produkter
         public static void ViewProductsMenu()
         {
             try
@@ -166,19 +159,9 @@ namespace TheVendingMachine.Services
                         break; 
                     case 2:
                         Console.Clear();
-                        // Man måste ha lagt i minst 15 kr för att kunna komma till alternativet att genomföra ett köp
-                        if (Wallet.moneyInMachine < 15)
-                            {
-                                Console.WriteLine("Please feed the machine to make a purchase");
-                                Console.WriteLine("Press a key to continue");
-                                Console.ReadKey();
-                                Wallet.InsertMoney();
-                            }
-                            else
-                            {
-                                // Skickar vidare till Villkoren för att genomföra ett köp
-                                Wallet.MakePurchase();
-                            }
+                        // Metod som kollar att man måste ha lagt i minst 15 kr för att kunna komma till alternativet att göra ett köp
+                        // Den skickar antingen till Make purchase, eller Insert money
+                        Wallet.CheckIfMoneyInserted();
                         break;
                     case 3:
                         Console.Clear(); 
@@ -200,21 +183,19 @@ namespace TheVendingMachine.Services
             }
         }
 
+        // Metod som anropas när användaren väljer att stänga av maskinen
         public static void EndMessage()
         {
+            try
+            {
             Console.Clear(); 
             Console.WriteLine("Thank you for using this SUPER AMAZING VENDING MACHINE");
-            Console.WriteLine(@"
- ____ ____ ____ 
-||B |||Y |||E ||
-||__|||__|||__||
-|/__\|/__\|/__\|
-");
+            Helper.ByeBye(); 
 
             // Hämtar maskinens pengar summerat
             var returnMoney = Wallet.moneyInMachine; 
 
-            // Om lmaskinen inte innehåller några pengar
+            // Om maskinen inte innehåller några pengar skirvs ett meddelande ut
             if (returnMoney == 0)
             {
                 Console.WriteLine("Machine contains no money.");
@@ -222,12 +203,10 @@ namespace TheVendingMachine.Services
             else
             {
                 // När användaren väljer att avsluta programmet skall kvarstående
-                // pengar i automaten returneras till avsändaren. Skriv ut hur
+                // pengar i automaten returneras till avsändaren. Metoden skriver ut hur
                 // mycket pengar som returneras samt i vilken valör.
-
                 // När köp är avslutade så återlämnas återstående
                 // inmatad summa i högsta valörer möjliga. 1, 5, 10, 20, 50, 100.
-
                 Change.ReturnMoney(returnMoney); 
             }
             Console.WriteLine("Press a key to turn me off");
@@ -235,6 +214,12 @@ namespace TheVendingMachine.Services
             Console.ReadKey();
             // För att säkerställa att programmet avslutas: 
             Environment.Exit(-1);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Helper.ReturnMenuMessage(); 
+            }
         }
     }
 }

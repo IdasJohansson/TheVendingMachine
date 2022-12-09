@@ -38,7 +38,22 @@ namespace TheVendingMachine.Items
         // Lista med alla produkter
         public static List<Product> products = new List<Product>();
 
-        // Metod som anropas i 
+        // Metod som returnerar en ny instans av en produktkategori, anropas när man ska skapa en produkt och tilldela den värden. 
+        public static Product CreateProduct(string ProductCategory)
+        {
+            if (ProductCategory.Equals("Soda"))
+                return new Soda();
+            else if (ProductCategory.Equals("Sorbet"))
+                return new Sorbet();
+            else if (ProductCategory.Equals("Berry"))
+                return new Berry();
+            else
+                Helper.ErrorColor("Something went wrong when creating product category.");
+            Helper.ReturnMenuMessage();
+            return null;
+        }
+
+        // Metod som returnerar en instans av respektove produkt
         public IProduct GetProduct(string ProductItemType)
         {
             if (ProductItemType.Equals("AppleSoda"))
@@ -65,23 +80,28 @@ namespace TheVendingMachine.Items
             return null;
         }
 
-        // Metod som returnerar en ny instans av en produktkategori, anropas bland annat i alla produkters konstuktorer
-        public static Product CreateProduct(string ProductCategory)
+        // Adderar info till alla produkter som ska säljas i maskinen
+        public static void AddProductInfoWrapper()
         {
-            if (ProductCategory.Equals("Soda"))
-                return new Soda();
-            else if (ProductCategory.Equals("Sorbet"))
-                return new Sorbet();
-            else if (ProductCategory.Equals("Berry"))
-                return new Berry();
-            else
-                Helper.ErrorColor("Something went wrong when creating product category.");
-                Helper.ReturnMenuMessage();
-            return null; 
+            AppleSoda appleSoda = new AppleSoda();
+            appleSoda.AddProductInfo();
+            BlackcurrantSoda blackcurrantSoda = new BlackcurrantSoda();
+            blackcurrantSoda.AddProductInfo();
+            CherrySoda cherrySoda = new CherrySoda();
+            cherrySoda.AddProductInfo();
+            ElderberrySorbet elderberrySorbet = new ElderberrySorbet();
+            elderberrySorbet.AddProductInfo();
+            LemonSorbet lemonSorbet = new LemonSorbet();
+            lemonSorbet.AddProductInfo();
+            MangoSorbet mangoSorbet = new MangoSorbet();
+            mangoSorbet.AddProductInfo();
+            Raspberry raspberry = new Raspberry();
+            raspberry.AddProductInfo();
+            Strawberry strawberry = new Strawberry();
+            strawberry.AddProductInfo();
+            Wildberry wildberry = new Wildberry();
+            wildberry.AddProductInfo();
         }
-
-       
-      
 
     }
 }
