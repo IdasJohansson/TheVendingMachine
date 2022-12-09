@@ -5,7 +5,8 @@ using TheVendingMachine.Services;
 
 namespace TheVendingMachine.Items
 {
-	public class Strawberry : Product, IProduct
+    // Produkten ärver från den abstrakta klassen Product och använder interfacet Iproduct
+    public class Strawberry : Product, IProduct
 	{
         public override int ProductId
         {
@@ -31,21 +32,20 @@ namespace TheVendingMachine.Items
             set { productCost = value; }
         }
 
+        // Denna metod lägger till information om produkten
+        // Skapar en produkt i kategorin Berry, tilldelar den värden och lägger in den i listan av produkter
         public void AddProductInfo()
         {
-            // Creating a Berry objekt
             Product product = Product.CreateProduct("Berry");
-
-            // Giving the LemonSorbet objekt values
             product.ProductId = 8;
             product.ProductName = "Strawberry";
             product.ProductInfo = "200g";
             product.ProductCost = 40;
-
-            // Objekt to List of products 
             Product.products.Add(product);
         }
 
+        // Metod som finns i interfacet, innehåller en description om produkten
+        // metoden anropas och visas innan användaren väljer att bekräfta sitt köp.
         public void Description()
         {
             DateTime date = DateTime.Now;
@@ -55,6 +55,9 @@ namespace TheVendingMachine.Items
             Console.WriteLine(info);
         }
 
+        // Metod som finns i interfacet,
+        // Anropas när efter att produktens description har visats upp.
+        // Tar in kostnaden på produkten och användaren kan välja att antingen bekräfta köpet eller avbryta
         public void Buy(int cost)
         {
             try
@@ -79,7 +82,6 @@ namespace TheVendingMachine.Items
                 else
                 {
                     Console.Clear();
-                    // Användaren ska kunna acceptera köpet eller välja att gå tillbaka till menyn
                     Menus.StartMenu();
                 }
 
@@ -91,6 +93,7 @@ namespace TheVendingMachine.Items
             }
         }
 
+        // Metod som finns i interfacet, anropas efter att köpet av produkten har gått igenom och innebär att användaren använder produkten
         public void Use()
         {
             Console.Clear();

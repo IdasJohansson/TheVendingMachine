@@ -22,13 +22,23 @@ namespace TheVendingMachine.MoneyHandler
         // Visar upp saldot i plånboken respektive pengar man har att handla för i maskinen
         public static void ViewBalance()
         {
+            try
+            {
             Console.WriteLine($"Money in wallet: {moneyInWallet}");
             Console.WriteLine($"Money in machine: {moneyInMachine}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Helper.ReturnMenuMessage();
+            }
         }
 
         // Denna metod kollar så att det finns tillräckligt med inmatade pengar i maskinen för att kunna handla
         public static bool CheckBalance(int productCost)
         {
+            try
+            {
             Console.WriteLine();
             Console.Write("Current money inserted in machine: ");
             Console.WriteLine(moneyInMachine);
@@ -44,6 +54,13 @@ namespace TheVendingMachine.MoneyHandler
             else
             {
                 return false; 
+            }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Helper.ReturnMenuMessage();
+                return false;
             }
         }
 
@@ -73,8 +90,7 @@ namespace TheVendingMachine.MoneyHandler
                 // Instansierar ett objekt av produktkategorin
                 Product product = Product.CreateProduct(category);
 
-                // skapar ett objekt med namnet på den hämtade produkten..... Getproduct metoden kommer från category klassen som har ärvt den från product-klassen. 
-
+                // Skapar ett objekt av namnet på den hämtade produkten.
                 IProduct iproduct = product.GetProduct(productToBuy.ProductName);
 
                 // Vid köp av produkt så skall en kontroll ske; att användaren har
@@ -104,6 +120,26 @@ namespace TheVendingMachine.MoneyHandler
                 Helper.ErrorColor(e.Message);
                 Helper.ReturnMenuMessage();
             }
+        }
+
+        // Metod som kollar att man måste ha lagt i minst 15 kr för att kunna komma till alternativet att göra ett köp
+        public static void CheckIfMoneyInserted()
+        {
+            if (moneyInMachine < 15)
+            {
+                Console.WriteLine("Please feed the machine to make a purchase");
+                Console.WriteLine("Press a key to continue");
+                Console.ReadKey();
+                Wallet.InsertMoney();
+            }
+            else
+            {
+                // Visar lista av produktkategorier
+                Menus.ViewCategories();
+                // Skickar vidare till Villkoren för att genomföra ett köp
+                Wallet.MakePurchase();
+            }
+
         }
 
         // Metod för att mata i pengar i maskinen
@@ -168,6 +204,8 @@ namespace TheVendingMachine.MoneyHandler
         // Eftersom plånboken bara innehåller 10 mynt av varje, går det bara att lägga i max 10 tiokronor, max 10 femkronor och max 10 enkronor. TenCoinLimit håller koll på det. 
         public static void TenCoinLimit(int insertedAmount)
         {
+            try
+            {
             switch (insertedAmount)
             {
                 case 10:
@@ -189,6 +227,13 @@ namespace TheVendingMachine.MoneyHandler
                     Helper.ErrorColor("Something went wrong with TenCoinLimit");
                     Helper.ReturnMenuMessage();
                     break;
+            }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Helper.ReturnMenuMessage(); 
             }
         }
        
