@@ -71,3 +71,14 @@ En utmaning jag hade var att bestämma hur jag skulle skapa mina produkt-objekt 
 Något som jag gärna hade förbättrat med projektet är att det känns som att det är väldigt mycket upprepande kod i de olika produktklasserna då metoderna där i ser väldigt lika ut bortsett från unika saker som Produktnamn och Description. 
 En annan sak jag har funderat över är hur "effektiv" koden är skriven, tex hur lång tid olika kommandon tar osv. Detta hade jag också gärna förbättrat men vet i nuläget inte hur jag skulle gå tillväga för att göra. 
 
+# Källor
+
+https://www.programiz.com/csharp-programming/abstract-class
+![image](https://user-images.githubusercontent.com/89834477/206686411-3f5a0de2-3bd5-4897-a007-5974fd52f680.png)
+
+https://www.geeksforgeeks.org/c-sharp-abstract-classes/
+![image](https://user-images.githubusercontent.com/89834477/206686452-8cf26708-47d7-46b4-9cca-ae5bc91e0a17.png)
+
+https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
+
+https://www.oocities.org/spunk1111/food.htm
