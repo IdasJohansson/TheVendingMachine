@@ -43,11 +43,25 @@ Detta är mapp/fil-strukturen i projektet:
 När man starta programmet körs en metod som gör att alla produkter som ska säljas i Varuautomaten får värden, dvs ProductId, ProductName, ProductInfo samt ProductCost. Produkterna läggs även till i en statisk lista i Poduktklassen.  
 Nästa metoden som körs är en Startmeny metod där man får välja mellan att visa produkter, stoppa i pengar, göra ett köp eller stänga av maskinen. I startmenyn anropas en metod som visar upp hur mycket pengar som finns i plånboken samt hur mycket pengar som finns i maskinen. Menyn är en switch som anropar olika metoder beroende på användarens val.
 
-Väljer man att visa produkter, skickas man först till en meny där man får välja kategori och när kategorins produkter visas upp visas även en annan meny upp där man får välja vad man vill göra härnäst. Då kan man välja mellan att sätta i pengar, göra ett köp, gå tillbaka till start eller stänga av programmet. Både valet att lägga i pengar eller köpa en produkt skickar vidare till metoden att lägga i pengar i maskinen om variabeln som lagrar pengar i maskinen är mindre än 15. Eftersom plånboken enbart innehåller en kronor, femkronor och tiokronor är det bara dessa valörer som användaren kan mata in i maskinen. 
+![image](https://user-images.githubusercontent.com/89834477/206699083-5f041310-e2cb-4c44-9e4d-ca268483e9e0.png)
+
+
+Väljer man att visa produkter, skickas man först till en meny där man får välja kategori och efter val av kategori visas kategorins produkter upp samtidigt som en annan meny blit synlig där man får välja vad man vill göra härnäst. Då kan man välja mellan att sätta i pengar, göra ett köp, gå tillbaka till start eller stänga av programmet. Både valet att lägga i pengar eller köpa en produkt skickar vidare till metoden att lägga i pengar i maskinen om variabeln som lagrar pengar i maskinen är mindre än 15. Eftersom plånboken enbart innehåller en kronor, femkronor och tiokronor är det bara dessa valörer som användaren kan mata in i maskinen. 
+
+![image](https://user-images.githubusercontent.com/89834477/206699189-efec3a71-1b6a-4687-a4f2-c658504ccfeb.png)
+![image](https://user-images.githubusercontent.com/89834477/206699227-2f056e7e-375e-463f-9c14-96f065a4d3e5.png)
+![image](https://user-images.githubusercontent.com/89834477/206699356-559f5db3-2c58-45b3-9742-53a8a1bc5f07.png)
+
 
 Om man har lagt i minst 15kr, vilket är den lägsta produktkostnaden, i maskinen skickas man vidare till metoden där man kan välja produkt och genomföra ett köp. Det första som händer i den metoden är att användaren får välja en produkt och sedan kollar en metod som returnerar en bool av om användaren matat i tillräckligt med pengar i maskinen. Om inte skickas den till tidigare nämda metod där man får lägga i pengar. Om det finns tillräckligt med pengar skrivs produktens information ut och användaren för välja att bekräfta köpet eller återgå till menyn. Väljer man att bekräfta köpet så används produkten och användaren blir efter detta returnerad till Startmenyn där det återigen går att välja om man vill se produkter, lägga i pengar, göra ett köp eller stänga av maskinen. 
 
+![image](https://user-images.githubusercontent.com/89834477/206699583-d689bf12-6c0d-4aa0-b6df-a7129a4b79e8.png)
+![image](https://user-images.githubusercontent.com/89834477/206699647-5c1bb2b9-82d5-452c-9bc8-9f7148cc392d.png)
+
 När användaren väljer att stänga av maskinen ska pengar returneras i högsta möjliga valör. Denna uträkning sker i klassen Changes konstruktor. Där man genom division och modulus räknar ut hur många utav varje valör som eventuellt ska returneras till användaren. 
+
+![image](https://user-images.githubusercontent.com/89834477/206699851-874116f1-f157-44c8-8c91-8ea144009b8c.png)
+
 
 # Olika val 
 I mina menyer har jag valt att använda mig av switch cases då användaren i varje meny får tre eller flera val att göra som programet tar in som en input. 
@@ -57,7 +71,7 @@ När något går fel ville jag att detta skulle synas extra tydligt genom att te
 
 En sak som sker ofta är att konsolen ska rensas och användaren ska skickas tillbaka till Start, därför gjorde jag en metod för detta också. 
 
-I min abstrakta klass valde jag utöver de properties som mina produkter skulle ha att använda mig av en statisk lista där alla produkter lagras. Den är statisk för att vara lätt att komma åt i alla delar av programmet genom produktklassen. 
+I min abstrakta klass valde jag utöver de properties som mina produkter skulle ha att använda mig av en statisk lista där alla produkter lagras. Den är statisk för att vara lätt att komma åt i alla delar av programmet genom produktklassen. I denna klass finns också en metod som skapar produkter av en viss kategori samt en metod som hämtar produkter med ett visst produktnamn. I dessa två metoder har jag valt att använda mig av if/else if satser som returnerar antingen en kategoriklass eller en produktklass där inputen i metoden avgör vilken specifik klass som returneras. 
 
 # Lärdomar 
 Jag har bland annat lärt mig nya saker om: 
