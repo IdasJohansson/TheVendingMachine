@@ -107,7 +107,7 @@ namespace TheVendingMachine.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Helper.ErrorColor(e.Message);
                 Helper.ReturnMenuMessage();
             }
         }
@@ -217,7 +217,7 @@ namespace TheVendingMachine.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Helper.ErrorColor(ex.Message);
                 Helper.ReturnMenuMessage(); 
             }
         }
