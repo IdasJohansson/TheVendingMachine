@@ -56,7 +56,7 @@ namespace TheVendingMachine.Items
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Helper.ErrorColor(ex.Message);
                 Helper.ReturnMenuMessage();
                 return null;
             }
@@ -92,7 +92,7 @@ namespace TheVendingMachine.Items
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Helper.ErrorColor(ex.Message);
                 Helper.ReturnMenuMessage();
                 return null;
             }
@@ -124,7 +124,7 @@ namespace TheVendingMachine.Items
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Helper.ErrorColor(ex.Message);
                 Helper.ReturnMenuMessage();
             }
         }

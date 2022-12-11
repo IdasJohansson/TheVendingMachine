@@ -1,6 +1,7 @@
 ﻿using System;
 using TheVendingMachine.Interfaces;
 using TheVendingMachine.Items;
+using TheVendingMachine.MoneyHandler;
 using TheVendingMachine.Services; 
 namespace TheVendingMachine.MoneyHandler
 {
@@ -232,7 +233,7 @@ namespace TheVendingMachine.MoneyHandler
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Helper.ErrorColor(ex.Message);
                 Helper.ReturnMenuMessage(); 
             }
         }
